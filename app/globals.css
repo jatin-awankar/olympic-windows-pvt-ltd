@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui;
+  --font-accent: var(--font-dm-sans), sans-serif;
+  
+  --color-primary: #0F1923;
+  --color-primary-light: #1A2A3A;
+  --color-primary-dark: #080E14;
+  --color-accent: #B8860B;
+  --color-accent-light: #D4A843;
+  --color-accent-subtle: rgba(184, 134, 11, 0.1);
+  --color-surface: #FAFAF8;
+  --color-surface-alt: #F0EFEB;
+  --color-border-custom: #E2E0DC;
+  
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #64748B;
+  --color-text-inverse: #FAFAF8;
+  --color-text-muted: #94A3B8;
+
+  --shadow-card: 0 10px 30px -10px rgba(15, 25, 35, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-text-inverse);
+}
+
+/* Accessible focus states matching gold accent */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Custom styling for inputs, etc. */
+input, textarea, select {
+  font-family: var(--font-sans);
+}
