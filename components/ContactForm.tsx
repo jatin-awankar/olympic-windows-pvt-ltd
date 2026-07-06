@@ -55,7 +55,6 @@ export default function ContactForm() {
       [name]: value,
     }));
 
-    // Clear error dynamically as the user types
     const error = validateField(name, value);
     setErrors((prev) => ({
       ...prev,
@@ -66,7 +65,6 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate all fields
     const newErrors: FormErrors = {};
     Object.entries(formData).forEach(([key, value]) => {
       const error = validateField(key, value);
@@ -82,20 +80,43 @@ export default function ContactForm() {
 
     setIsSubmitting(true);
 
-    // Simulate sending data to Formspree/API
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "4ee7b1a7-22c9-4115-921d-e83074764704",
+          from_name: "Olympic Windows Web Portal",
+          replyto: formData.email,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.companyName,
+          subject: `New B2B Consultation: ${formData.service}`,
+          message: formData.message,
+        }),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({
-      companyName: "",
-      name: "",
-      email: "",
-      phone: "",
-      service: "design",
-      message: "",
-    });
-    setErrors({});
+      const result = await response.json();
+      if (result.success) {
+        setIsSubmitted(true);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          companyName: "",
+          service: "design",
+          message: "",
+        });
+      }
+    } catch (error) {
+      console.error("Form submission failed", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -146,9 +167,8 @@ export default function ContactForm() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="e.g. John Doe"
-                  className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 transition-all duration-150 ${
-                    errors.name ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
-                  }`}
+                  className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 transition-all duration-150 ${errors.name ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
+                    }`}
                 />
                 {errors.name && <span className="text-[11px] text-red-500 font-medium">{errors.name}</span>}
               </div>
@@ -166,9 +186,8 @@ export default function ContactForm() {
                   value={formData.companyName}
                   onChange={handleChange}
                   placeholder="e.g. Acme Developers"
-                  className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 transition-all duration-150 ${
-                    errors.companyName ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
-                  }`}
+                  className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 transition-all duration-150 ${errors.companyName ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
+                    }`}
                 />
                 {errors.companyName && <span className="text-[11px] text-red-500 font-medium">{errors.companyName}</span>}
               </div>
@@ -188,9 +207,8 @@ export default function ContactForm() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="e.g. john@acme.com"
-                  className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 transition-all duration-150 ${
-                    errors.email ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
-                  }`}
+                  className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 transition-all duration-150 ${errors.email ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
+                    }`}
                 />
                 {errors.email && <span className="text-[11px] text-red-500 font-medium">{errors.email}</span>}
               </div>
@@ -207,10 +225,9 @@ export default function ContactForm() {
                   required
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="e.g. +91 98200 00000"
-                  className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 transition-all duration-150 ${
-                    errors.phone ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
-                  }`}
+                  placeholder="e.g. +91 91673 94442"
+                  className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 transition-all duration-150 ${errors.phone ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
+                    }`}
                 />
                 {errors.phone && <span className="text-[11px] text-red-500 font-medium">{errors.phone}</span>}
               </div>
@@ -249,9 +266,8 @@ export default function ContactForm() {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Describe your design, quantity, or project requirements..."
-                className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 resize-none transition-all duration-150 ${
-                  errors.message ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
-                }`}
+                className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 resize-none transition-all duration-150 ${errors.message ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
+                  }`}
               />
               {errors.message && <span className="text-[11px] text-red-500 font-medium">{errors.message}</span>}
             </div>

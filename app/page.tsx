@@ -46,7 +46,6 @@ export default function Home() {
     },
   ];
 
-  // Auto-slide effect
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
@@ -154,7 +153,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full font-sans overflow-hidden">
-      
+
       {/* 1. Hero Section (Dynamic Slider) */}
       <section className="relative h-[80vh] min-h-[600px] flex items-center bg-primary text-text-inverse overflow-hidden">
         <AnimatePresence mode="wait">
@@ -176,7 +175,7 @@ export default function Home() {
 
         <div className="relative mx-auto max-w-7xl px-6 md:px-10 w-full z-10 flex flex-col justify-center h-full">
           <div className="max-w-3xl flex flex-col space-y-6">
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               key={`span-${currentSlide}`}
@@ -185,8 +184,8 @@ export default function Home() {
             >
               European Precision • Indian Scale
             </motion.span>
-            
-            <motion.h1 
+
+            <motion.h1
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               key={`title-${currentSlide}`}
@@ -195,8 +194,8 @@ export default function Home() {
             >
               {heroSlides[currentSlide].title}
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               key={`desc-${currentSlide}`}
@@ -206,7 +205,7 @@ export default function Home() {
               {heroSlides[currentSlide].desc}
             </motion.p>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               key={`btn-${currentSlide}`}
@@ -246,9 +245,8 @@ export default function Home() {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                index === currentSlide ? "w-8 bg-accent" : "w-2 bg-white/40 hover:bg-white/70"
-              }`}
+              className={`h-2 rounded-full transition-all duration-300 ${index === currentSlide ? "w-8 bg-accent" : "w-2 bg-white/40 hover:bg-white/70"
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
@@ -259,11 +257,10 @@ export default function Home() {
       <section className="bg-surface py-12 border-b border-border-custom/50">
         <div className="mx-auto max-w-7xl px-6 md:px-10 grid grid-cols-1 md:grid-cols-3 gap-8">
           {stats.map((stat, i) => (
-            <div 
-              key={stat.label} 
-              className={`flex flex-col items-center text-center py-4 ${
-                i !== stats.length - 1 ? "md:border-r border-border-custom/30" : ""
-              }`}
+            <div
+              key={stat.label}
+              className={`flex flex-col items-center text-center py-4 ${i !== stats.length - 1 ? "md:border-r border-border-custom/30" : ""
+                }`}
             >
               <span className="font-accent text-4xl md:text-5xl font-bold text-accent">
                 {stat.value}
@@ -279,22 +276,22 @@ export default function Home() {
       {/* 3. Who We Are Section */}
       <section className="bg-surface py-24 border-b border-border-custom/30">
         <div className="mx-auto max-w-7xl px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          
+
           {/* Image box with real photo */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             className="lg:col-span-5 aspect-[4/3] w-full relative border border-border-custom/40 p-3 bg-surface-alt rounded-sm"
           >
-            <div 
+            <div
               className="absolute inset-3 bg-cover bg-center rounded-sm bg-slate-900"
               style={{ backgroundImage: `url('/images/general/cta-bg.jpg')` }}
             />
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -305,7 +302,7 @@ export default function Home() {
               Who We Are
             </span>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-primary">
-              We provide the best aluminum windows and doors​
+              We provide the best aluminum windows and doors
             </h2>
             <div className="h-0.5 w-16 bg-accent" />
             <p className="text-text-secondary leading-relaxed text-base">
@@ -345,7 +342,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {products.map((prod, i) => (
-              <motion.div 
+              <motion.div
                 key={prod.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -355,7 +352,7 @@ export default function Home() {
               >
                 <div className="space-y-4">
                   <div className="h-44 w-full bg-slate-900 rounded-sm overflow-hidden relative">
-                    <div 
+                    <div
                       className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                       style={{ backgroundImage: `url(${prod.imageUrl})` }}
                     />
@@ -408,7 +405,7 @@ export default function Home() {
             {whyChooseUs.map((item, i) => {
               const Icon = item.icon;
               return (
-                <motion.div 
+                <motion.div
                   key={item.title}
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -455,7 +452,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {projects.map((proj, i) => (
-              <motion.div 
+              <motion.div
                 key={proj.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -467,7 +464,7 @@ export default function Home() {
                   {proj.stat}
                 </div>
                 <div className="relative h-56 w-full bg-slate-900 overflow-hidden">
-                  <div 
+                  <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                     style={{ backgroundImage: `url(${proj.imageUrl})` }}
                   />
@@ -534,10 +531,10 @@ export default function Home() {
               Book a Consultation
             </Link>
             <a
-              href="tel:+919820000000"
+              href="tel:+919167394442"
               className="border border-white/50 hover:border-white text-white hover:bg-white/10 font-accent font-semibold px-8 py-4 rounded-sm transition-colors text-sm hover:shadow-lg active:scale-95 transition-transform"
             >
-              Call: +91 98200 00000
+              Call: +91 91673 94442
             </a>
           </div>
         </div>

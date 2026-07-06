@@ -26,7 +26,6 @@ export default function Navbar() {
     { name: "Aluminum Fins", href: "/products/aluminum-fins" },
   ];
 
-  // Lock scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -45,11 +44,10 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-border-custom bg-primary text-text-inverse shadow-sm">
       <div className="mx-auto flex max-w-7xl h-20 items-center justify-between px-6 md:px-10">
 
-        {/* Logo */}
         <Link href="/" className="flex items-center space-x-3 group">
-          <img 
-            src="/images/logo/logo-sm.png" 
-            alt="Olympic Windows Logo" 
+          <img
+            src="/images/logo/logo-sm.png"
+            alt="Olympic Windows Logo"
             className="h-9 w-9 object-contain"
           />
           <div className="flex flex-col">
@@ -62,7 +60,6 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center space-x-8 font-accent text-sm relative">
           {navLinks.map((link) => {
             const active = isActive(link.href);
@@ -84,7 +81,6 @@ export default function Navbar() {
             );
           })}
 
-          {/* Products Dropdown */}
           <div
             className="relative py-2"
             onMouseEnter={() => setIsProductsDropdownOpen(true)}
@@ -146,7 +142,6 @@ export default function Navbar() {
           </div>
         </nav>
 
-        {/* Header CTAs */}
         <div className="hidden lg:flex items-center space-x-6">
           <Link
             href="/contact"
@@ -156,10 +151,9 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile controls */}
         <div className="flex lg:hidden items-center space-x-4">
           <a
-            href="tel:+919820000000"
+            href="tel:+919167394442"
             className="p-2 text-text-inverse hover:text-accent transition-colors animate-pulse"
             title="Call Us"
           >
@@ -175,7 +169,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu Drawer */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -232,10 +225,10 @@ export default function Navbar() {
                 Book Consultation
               </Link>
               <a
-                href="tel:+919820000000"
+                href="tel:+919167394442"
                 className="border border-border-custom hover:border-accent text-center py-3.5 rounded-sm text-text-inverse hover:text-accent font-accent font-semibold active:scale-95 transition-transform"
               >
-                Call: +91 98200 00000
+                Call: +91 91673 94442
               </a>
             </div>
           </motion.div>

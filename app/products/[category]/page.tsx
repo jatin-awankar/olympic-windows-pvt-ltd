@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Check, Download, Info } from "lucide-react";
 
-// Types for product details
 interface ProductData {
   title: string;
   desc: string;
@@ -194,17 +193,17 @@ export default async function ProductCategoryDetail({ params }: PageProps) {
           })
         }}
       />
-      
+
       {/* Back button & Header Banner */}
       <section className="bg-primary text-text-inverse py-16 relative overflow-hidden">
-        <div 
+        <div
           className="absolute inset-0 opacity-15 bg-cover bg-center pointer-events-none"
           style={{
             backgroundImage: `linear-gradient(to right, rgba(10, 17, 34, 0.95) 30%, rgba(10, 17, 34, 0.6) 100%), url(${product.imageUrl})`
           }}
         />
         <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
-        
+
         <div className="relative mx-auto max-w-7xl px-6 md:px-10 w-full flex flex-col space-y-6 z-10">
           <Link
             href="/products"
@@ -228,14 +227,14 @@ export default async function ProductCategoryDetail({ params }: PageProps) {
       {/* Main Specifications Content */}
       <section className="bg-surface py-20 border-b border-border-custom/30">
         <div className="mx-auto max-w-7xl px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12">
-          
+
           {/* Left: Overview and Features */}
           <div className="lg:col-span-7 space-y-8">
-            
+
             {/* Styled Image Preview */}
             <div className="aspect-video w-full relative bg-slate-900 border border-border-custom/40 rounded-sm overflow-hidden shadow-sm">
-              <div 
-                className="absolute inset-0 bg-cover bg-center" 
+              <div
+                className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${product.imageUrl})` }}
               />
               <div className="absolute inset-0 bg-black/10" />

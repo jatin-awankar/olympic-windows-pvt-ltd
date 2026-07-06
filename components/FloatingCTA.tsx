@@ -8,9 +8,8 @@ export default function FloatingCTA() {
   const [mounted, setMounted] = useState(false);
   const [hoveredButton, setHoveredButton] = useState<"phone" | "whatsapp" | null>(null);
 
-  // TODO: Replace with the client's actual verified contact numbers
-  const whatsappNumber = "919820000000"; 
-  const phoneNumber = "+919820000000";
+  const whatsappNumber = "919167394442"; 
+  const phoneNumber = "+919167394442";
 
   useEffect(() => {
     setMounted(true);
@@ -20,7 +19,6 @@ export default function FloatingCTA() {
 
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end space-y-4">
-      {/* Phone Call Button */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -54,7 +52,6 @@ export default function FloatingCTA() {
         </motion.a>
       </motion.div>
 
-      {/* WhatsApp Button */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

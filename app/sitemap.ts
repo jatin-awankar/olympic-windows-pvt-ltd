@@ -34,7 +34,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
-  // Add static paths
   staticPages.forEach((route) => {
     sitemapEntries.push({
       url: `${baseUrl}${route}`,
@@ -44,7 +43,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // Add dynamic product paths
   productCategories.forEach((category) => {
     sitemapEntries.push({
       url: `${baseUrl}/products/${category}`,
@@ -54,7 +52,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // Add dynamic project paths
   projectSlugs.forEach((slug) => {
     sitemapEntries.push({
       url: `${baseUrl}/projects/${slug}`,

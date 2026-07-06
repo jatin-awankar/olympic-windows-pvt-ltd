@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import { RefreshCw, AlertOctagon } from "lucide-react";
 
 export default function Error({
@@ -10,11 +9,6 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  useEffect(() => {
-    // Log the error to an analytics or error tracking service
-    console.error(error);
-  }, [error]);
-
   return (
     <div className="min-h-[70vh] bg-surface flex flex-col items-center justify-center px-6 text-center font-sans">
       <div className="h-16 w-16 bg-red-100 text-red-600 flex items-center justify-center rounded-sm mb-6 border border-red-200">

@@ -88,7 +88,7 @@ export default function RootLayout({
               "image": "https://olympicwindows.in/images/logo/logo-high.png",
               "@id": "https://olympicwindows.in/#organization",
               "url": "https://olympicwindows.in",
-              "telephone": "+919820000000",
+              "telephone": "+919167394442",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "F11, 12 Balaji Plaza, Khoni - Taloja Bypass Road, Usatane",
@@ -116,9 +116,8 @@ export default function RootLayout({
                 "closes": "18:00"
               },
               "sameAs": [
-                "https://www.linkedin.com",
-                "https://www.instagram.com",
-                "https://www.facebook.com"
+                "https://www.linkedin.com/company/olympic-windows-private-limited/",
+                "https://www.facebook.com/olympicwindows.co.in/"
               ]
             })
           }}
