@@ -130,27 +130,64 @@ export default function Contact() {
       </section>
 
       {/* Map Segment */}
-      <section className="bg-surface-alt py-16 border-b border-border-custom/30 text-center">
-        <div className="mx-auto max-w-7xl px-6 md:px-10 flex flex-col items-center space-y-6">
-          <div className="space-y-2">
-            <h3 className="font-accent font-bold text-xl text-primary">Find Our Factory</h3>
-            <p className="text-xs text-text-secondary max-w-md mx-auto leading-relaxed">
-              Visits to our Mumbai manufacturing facilities are strictly by appointment only. Please coordinate with your technical project manager.
+      <section className="bg-surface-alt py-16 border-b border-border-custom/30">
+        <div className="mx-auto max-w-7xl px-6 md:px-10 flex flex-col items-center space-y-8">
+          <div className="space-y-2 text-center">
+            <h3 className="font-accent font-bold text-2xl text-primary">Our Locations</h3>
+            <p className="text-xs text-text-secondary max-w-lg mx-auto leading-relaxed">
+              With a factory in India and an office in London, we're strategically positioned to serve our clients efficiently and effectively.
             </p>
           </div>
           
-          <div className="w-full aspect-video md:aspect-[21/9] border border-border-custom/40 rounded-sm overflow-hidden bg-slate-100 shadow-md">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.3387816047157!2d73.1091599!3d19.0047394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7e722a27ffb2b%3A0xe54ef84c7e6c98aa!2sBalaji%20Plaza%2C%20Khoni%20-%20Taloja%20Bypass%20Rd%2C%20Usatane%2C%20Maharashtra%20421306!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
-              width="100%" 
-              height="100%" 
-              style={{ border: 0 }} 
-              allowFullScreen 
-              loading="lazy" 
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Olympic Windows India HQ & Factory Location"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+            {/* India Factory Map */}
+            <div className="flex flex-col space-y-4">
+              <div className="text-center space-y-1">
+                <h4 className="font-accent font-bold text-lg text-primary">India Factory</h4>
+                <p className="text-xs text-text-secondary leading-relaxed">
+                  F11, 12 Balaji Plaza, Khoni - Taloja Bypass Road, Usatane, Maharashtra.
+                </p>
+              </div>
+              <div className="w-full aspect-video border border-border-custom/40 rounded-sm overflow-hidden bg-slate-100 shadow-md">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.3387816047157!2d73.1091599!3d19.0047394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7e722a27ffb2b%3A0xe54ef84c7e6c98aa!2sBalaji%20Plaza%2C%20Khoni%20-%20Taloja%20Bypass%20Rd%2C%20Usatane%2C%20Maharashtra%20421306!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Olympic Windows India Factory & HQ Location"
+                />
+              </div>
+            </div>
+
+            {/* London Office Map */}
+            <div className="flex flex-col space-y-4">
+              <div className="text-center space-y-1">
+                <h4 className="font-accent font-bold text-lg text-primary">London Office</h4>
+                <p className="text-xs text-text-secondary leading-relaxed">
+                  UNIT 3A, Northgate Business Centre, Collier Row, Romford, London, UK
+                </p>
+              </div>
+              <div className="w-full aspect-video border border-border-custom/40 rounded-sm overflow-hidden bg-slate-100 shadow-md">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2478.0!2d0.1847!3d51.5834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sCollier%20Row%2C%20Romford!5e0!3m2!1sen!2suk!4v1710000000000!5m2!1sen!2suk"
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Olympic Windows London Office Location"
+                />
+              </div>
+            </div>
           </div>
+
+          <p className="text-[10px] text-text-muted font-accent uppercase tracking-wider">
+            Visits to our manufacturing facilities are strictly by appointment only.
+          </p>
         </div>
       </section>
     </div>
