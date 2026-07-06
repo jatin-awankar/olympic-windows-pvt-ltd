@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle, Loader2 } from "lucide-react";
+import { CheckCircle, Loader2, AlertCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface FormErrors {
@@ -25,6 +25,7 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const validateField = (name: string, value: string): string => {
     if (!value.trim() && name !== "companyName") {
@@ -64,6 +65,8 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    setSubmitError(null);
 
     const newErrors: FormErrors = {};
     Object.entries(formData).forEach(([key, value]) => {
@@ -111,9 +114,12 @@ export default function ContactForm() {
           service: "design",
           message: "",
         });
+      } else {
+        setSubmitError(result.message || "Failed to submit inquiry. Please verify your details and try again.");
       }
     } catch (error) {
       console.error("Form submission failed", error);
+      setSubmitError("A connection error occurred. Please check your internet connection.");
     } finally {
       setIsSubmitting(false);
     }
@@ -153,6 +159,17 @@ export default function ContactForm() {
             className="space-y-6"
             noValidate
           >
+            {submitError && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-sm text-xs font-semibold flex items-center space-x-2 shadow-sm"
+              >
+                <AlertCircle className="h-4 w-4 text-red-500 shrink-0" />
+                <span>{submitError}</span>
+              </motion.div>
+            )}
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* Name */}
               <div className="flex flex-col space-y-2">
@@ -166,7 +183,7 @@ export default function ContactForm() {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="e.g. John Doe"
+                  placeholder="e.g. Rajay Damodar"
                   className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 transition-all duration-150 ${errors.name ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
                     }`}
                 />
@@ -185,7 +202,7 @@ export default function ContactForm() {
                   required
                   value={formData.companyName}
                   onChange={handleChange}
-                  placeholder="e.g. Acme Developers"
+                  placeholder="e.g. RJK Group"
                   className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 transition-all duration-150 ${errors.companyName ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
                     }`}
                 />
@@ -206,7 +223,7 @@ export default function ContactForm() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="e.g. john@acme.com"
+                  placeholder="e.g. raj@rjk.com"
                   className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 transition-all duration-150 ${errors.email ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
                     }`}
                 />
@@ -225,7 +242,7 @@ export default function ContactForm() {
                   required
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="e.g. +91 91673 94442"
+                  placeholder="e.g. +919900011223"
                   className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 transition-all duration-150 ${errors.phone ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
                     }`}
                 />
