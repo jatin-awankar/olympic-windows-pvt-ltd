@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -9,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
   const navLinks = [
@@ -37,18 +39,32 @@ export default function Navbar() {
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   const isActive = (href: string) => pathname === href;
   const isProductsActive = () => pathname.startsWith("/products");
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border-custom bg-primary text-text-inverse shadow-sm">
+    <header className={`sticky top-0 z-50 w-full border-b border-border-custom text-text-inverse shadow-sm transition-colors duration-300 ${scrolled ? "bg-primary/95 backdrop-blur-md" : "bg-primary"}`}>
       <div className="mx-auto flex max-w-7xl h-20 items-center justify-between px-6 md:px-10">
 
         <Link href="/" className="flex items-center space-x-3 group">
-          <img
+          <Image
             src="/images/logo/logo-sm.png"
             alt="Olympic Windows Logo"
+            width={36}
+            height={36}
             className="h-9 w-9 object-contain"
+            priority
           />
           <div className="flex flex-col">
             <span className="font-accent text-lg font-bold tracking-wider text-text-inverse leading-tight">
@@ -85,6 +101,12 @@ export default function Navbar() {
             className="relative py-2"
             onMouseEnter={() => setIsProductsDropdownOpen(true)}
             onMouseLeave={() => setIsProductsDropdownOpen(false)}
+            onFocus={() => setIsProductsDropdownOpen(true)}
+            onBlur={(e) => {
+              if (!e.currentTarget.contains(e.relatedTarget)) {
+                setIsProductsDropdownOpen(false);
+              }
+            }}
           >
             <button
               onClick={() => setIsProductsDropdownOpen(!isProductsDropdownOpen)}
@@ -154,7 +176,7 @@ export default function Navbar() {
         <div className="flex lg:hidden items-center space-x-4">
           <a
             href="tel:+919167394442"
-            className="p-2 text-text-inverse hover:text-accent transition-colors animate-pulse"
+            className="p-2 text-text-inverse hover:text-accent transition-colors"
             title="Call Us"
           >
             <Phone className="h-5 w-5" />

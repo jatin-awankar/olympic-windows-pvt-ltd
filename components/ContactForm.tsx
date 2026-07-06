@@ -12,6 +12,54 @@ interface FormErrors {
   message?: string;
 }
 
+interface FormFieldProps {
+  id: string;
+  name: string;
+  label: string;
+  type?: string;
+  required?: boolean;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder: string;
+  error?: string;
+}
+
+function FormField({
+  id,
+  name,
+  label,
+  type = "text",
+  required = false,
+  value,
+  onChange,
+  placeholder,
+  error,
+}: FormFieldProps) {
+  const errorId = `${id}-error`;
+
+  return (
+    <div className="flex flex-col space-y-2">
+      <label htmlFor={id} className="text-xs font-bold font-accent uppercase text-text-secondary">
+        {label} {required && <span className="text-accent">*</span>}
+      </label>
+      <input
+        type={type}
+        id={id}
+        name={name}
+        required={required}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? errorId : undefined}
+        className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 transition-all duration-150 ${error ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
+          }`}
+      />
+      {error && <span id={errorId} className="text-[11px] text-red-500 font-medium">{error}</span>}
+    </div>
+  );
+}
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     companyName: "",
@@ -26,6 +74,8 @@ export default function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const hasErrors = Object.values(errors).some((e) => e);
 
   const validateField = (name: string, value: string): string => {
     if (!value.trim() && name !== "companyName") {
@@ -55,6 +105,8 @@ export default function ContactForm() {
       ...prev,
       [name]: value,
     }));
+
+    if (submitError) setSubmitError(null);
 
     const error = validateField(name, value);
     setErrors((prev) => ({
@@ -164,6 +216,7 @@ export default function ContactForm() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-sm text-xs font-semibold flex items-center space-x-2 shadow-sm"
+                role="alert"
               >
                 <AlertCircle className="h-4 w-4 text-red-500 shrink-0" />
                 <span>{submitError}</span>
@@ -171,86 +224,53 @@ export default function ContactForm() {
             )}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {/* Name */}
-              <div className="flex flex-col space-y-2">
-                <label htmlFor="name" className="text-xs font-bold font-accent uppercase text-text-secondary">
-                  Full Name <span className="text-accent">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="e.g. Rajay Damodar"
-                  className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 transition-all duration-150 ${errors.name ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
-                    }`}
-                />
-                {errors.name && <span className="text-[11px] text-red-500 font-medium">{errors.name}</span>}
-              </div>
-
-              {/* Company Name */}
-              <div className="flex flex-col space-y-2">
-                <label htmlFor="companyName" className="text-xs font-bold font-accent uppercase text-text-secondary">
-                  Company Name <span className="text-accent">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="companyName"
-                  name="companyName"
-                  required
-                  value={formData.companyName}
-                  onChange={handleChange}
-                  placeholder="e.g. RJK Group"
-                  className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 transition-all duration-150 ${errors.companyName ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
-                    }`}
-                />
-                {errors.companyName && <span className="text-[11px] text-red-500 font-medium">{errors.companyName}</span>}
-              </div>
+              <FormField
+                id="name"
+                name="name"
+                label="Full Name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="e.g. Rajay Damodar"
+                error={errors.name}
+              />
+              <FormField
+                id="companyName"
+                name="companyName"
+                label="Company Name"
+                required
+                value={formData.companyName}
+                onChange={handleChange}
+                placeholder="e.g. RJK Group"
+                error={errors.companyName}
+              />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {/* Email */}
-              <div className="flex flex-col space-y-2">
-                <label htmlFor="email" className="text-xs font-bold font-accent uppercase text-text-secondary">
-                  Email Address <span className="text-accent">*</span>
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="e.g. raj@rjk.com"
-                  className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 transition-all duration-150 ${errors.email ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
-                    }`}
-                />
-                {errors.email && <span className="text-[11px] text-red-500 font-medium">{errors.email}</span>}
-              </div>
-
-              {/* Phone */}
-              <div className="flex flex-col space-y-2">
-                <label htmlFor="phone" className="text-xs font-bold font-accent uppercase text-text-secondary">
-                  Phone Number <span className="text-accent">*</span>
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  required
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="e.g. +919900011223"
-                  className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 transition-all duration-150 ${errors.phone ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
-                    }`}
-                />
-                {errors.phone && <span className="text-[11px] text-red-500 font-medium">{errors.phone}</span>}
-              </div>
+              <FormField
+                id="email"
+                name="email"
+                label="Email Address"
+                type="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="e.g. rajesh@rjk.com"
+                error={errors.email}
+              />
+              <FormField
+                id="phone"
+                name="phone"
+                label="Phone Number"
+                type="tel"
+                required
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="e.g. +919900011223"
+                error={errors.phone}
+              />
             </div>
 
-            {/* Service Dropdown */}
             <div className="flex flex-col space-y-2">
               <label htmlFor="service" className="text-xs font-bold font-accent uppercase text-text-secondary">
                 Services Required
@@ -262,15 +282,14 @@ export default function ContactForm() {
                 onChange={handleChange}
                 className="bg-surface border border-border-custom/50 px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30 h-[46px] transition-all duration-150"
               >
-                <option value="design">Design & Optimization Consultation</option>
-                <option value="manufacturing">Manufacturing (Windows & Doors)</option>
-                <option value="facades">Facade & Curtain Walls</option>
+                <option value="design">Design &amp; Optimization Consultation</option>
+                <option value="manufacturing">Manufacturing (Windows &amp; Doors)</option>
+                <option value="facades">Facade &amp; Curtain Walls</option>
                 <option value="fins">Aluminum Architectural Fins</option>
-                <option value="amc">AMC & Gasket Inspection</option>
+                <option value="amc">AMC &amp; Gasket Inspection</option>
               </select>
             </div>
 
-            {/* Message */}
             <div className="flex flex-col space-y-2">
               <label htmlFor="message" className="text-xs font-bold font-accent uppercase text-text-secondary">
                 Message <span className="text-accent">*</span>
@@ -283,17 +302,18 @@ export default function ContactForm() {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Describe your design, quantity, or project requirements..."
+                aria-invalid={errors.message ? true : undefined}
+                aria-describedby={errors.message ? "message-error" : undefined}
                 className={`bg-surface border px-4 py-3 rounded-sm text-sm text-text-primary focus:outline-none focus:ring-1 focus:ring-accent/30 resize-none transition-all duration-150 ${errors.message ? "border-red-500 focus:border-red-500" : "border-border-custom/50 focus:border-accent"
                   }`}
               />
-              {errors.message && <span className="text-[11px] text-red-500 font-medium">{errors.message}</span>}
+              {errors.message && <span id="message-error" className="text-[11px] text-red-500 font-medium">{errors.message}</span>}
             </div>
 
-            {/* Submit button */}
             <button
               type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-accent hover:bg-accent-light text-white font-accent font-semibold py-4 rounded-sm transition-colors duration-200 text-sm uppercase tracking-wider disabled:opacity-50 flex items-center justify-center space-x-2"
+              disabled={isSubmitting || hasErrors}
+              className={`w-full bg-accent hover:bg-accent-light text-white font-accent font-semibold py-4 rounded-sm transition-colors duration-200 text-sm uppercase tracking-wider disabled:opacity-50 flex items-center justify-center space-x-2 ${hasErrors ? "cursor-not-allowed" : ""}`}
             >
               {isSubmitting ? (
                 <>
