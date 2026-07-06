@@ -143,7 +143,7 @@ export default function ContactForm() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "4ee7b1a7-22c9-4115-921d-e83074764704",
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "",
           from_name: "Olympic Windows Web Portal",
           replyto: formData.email,
           name: formData.name,
