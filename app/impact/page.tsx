@@ -18,20 +18,20 @@ export default function Impact() {
       icon: Landmark,
       title: "Women Empowerment in Manufacturing",
       desc: "We actively challenge the gender gap in the heavy industrial sector. Olympic Windows runs a dedicated vocational training program to employ and empower women in manufacturing design, logistics control, and precise quality assessment roles.",
-      imageUrl: "/images/impact/women-empowerment.png",
+      imageUrl: "/images/impact/women-empowerment.jpg",
     },
     {
       id: "optimization",
       icon: Layers,
       title: "Profile Scrap Optimization",
       desc: "Using advanced nesting software, we calculate optimal cutting layouts before feeding profiles to fabrication lines. This optimization has reduced our default profile scrap rate from 8% down to under 2.5%, reducing material impact.",
-      imageUrl: "/images/hero/slide-3.jpg",
+      imageUrl: "/images/impact/profile-scrap.jpg",
     },
   ];
 
   return (
     <div className="flex flex-col w-full font-sans overflow-hidden">
-      
+
       {/* Page Header */}
       <section className="bg-primary text-text-inverse py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px]" />
@@ -70,19 +70,18 @@ export default function Impact() {
               <div
                 key={init.id}
                 id={init.id}
-                className={`flex flex-col lg:flex-row gap-12 items-center scroll-mt-24 ${
-                  isEven ? "" : "lg:flex-row-reverse"
-                }`}
+                className={`flex flex-col lg:flex-row gap-12 items-center scroll-mt-24 ${isEven ? "" : "lg:flex-row-reverse"
+                  }`}
               >
                 {/* Visual card representer with actual photo */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, x: isEven ? -40 : 40 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.5 }}
                   className="w-full lg:w-1/2 aspect-video border border-border-custom/40 p-4 bg-surface rounded-sm relative shrink-0 group overflow-hidden shadow-sm"
                 >
-                  <div 
+                  <div
                     className="absolute inset-4 bg-cover bg-center rounded-sm bg-slate-900 transition-transform duration-700 group-hover:scale-105"
                     style={{ backgroundImage: `url(${init.imageUrl})` }}
                   />
@@ -90,7 +89,7 @@ export default function Impact() {
                 </motion.div>
 
                 {/* Content */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 25 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}

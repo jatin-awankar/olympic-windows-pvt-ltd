@@ -18,7 +18,7 @@ export default function ProductsIndex() {
       title: "Aluminum Doors",
       desc: "High-security sliding, folding, and swing doors built for expansive high-rise balconies and heavy commercial traffic. Offers silent, smooth operations.",
       specs: ["Profile: Heavy-Duty Reinforced Aluminum", "Glass: Tempered / Laminated Safety Glass", "Operations: Lift-and-slide, bi-fold, swing", "Monsoon Rating: Fully weather-sealed gaskets"],
-      imageUrl: "/images/products/aluminum-doors.png",
+      imageUrl: "/images/products/aluminum-doors.jpg",
     },
     {
       slug: "facades",
@@ -38,7 +38,7 @@ export default function ProductsIndex() {
 
   return (
     <div className="flex flex-col w-full font-sans overflow-hidden">
-      
+
       {/* Page Header */}
       <section className="bg-primary text-text-inverse py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px]" />
@@ -62,19 +62,18 @@ export default function ProductsIndex() {
             return (
               <div
                 key={prod.slug}
-                className={`flex flex-col lg:flex-row gap-12 items-center border-b border-border-custom/30 pb-16 last:border-b-0 last:pb-0 last:border-none ${
-                  isEven ? "" : "lg:flex-row-reverse"
-                }`}
+                className={`flex flex-col lg:flex-row gap-12 items-center border-b border-border-custom/30 pb-16 last:border-b-0 last:pb-0 last:border-none ${isEven ? "" : "lg:flex-row-reverse"
+                  }`}
               >
                 {/* Visual Image with zoom hover effect */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, x: isEven ? -40 : 40 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.5 }}
                   className="w-full lg:w-[420px] h-[300px] bg-slate-900 rounded-sm overflow-hidden relative shrink-0 border border-border-custom/40 group shadow-sm"
                 >
-                  <div 
+                  <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                     style={{ backgroundImage: `url(${prod.imageUrl})` }}
                   />
@@ -82,7 +81,7 @@ export default function ProductsIndex() {
                 </motion.div>
 
                 {/* Content */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 25 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
@@ -91,7 +90,7 @@ export default function ProductsIndex() {
                 >
                   <h2 className="text-2xl md:text-3xl font-bold text-primary font-accent">{prod.title}</h2>
                   <p className="text-text-secondary leading-relaxed text-base">{prod.desc}</p>
-                  
+
                   {/* Technical Specifications preview */}
                   <div className="bg-surface-alt p-6 border border-border-custom/40 rounded-sm shadow-inner">
                     <h4 className="text-xs uppercase tracking-wider text-accent font-bold font-accent mb-3">

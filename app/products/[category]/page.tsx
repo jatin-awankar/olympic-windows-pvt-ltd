@@ -59,7 +59,7 @@ const productRegistry: Record<string, ProductData> = {
     },
     finishes: ["Anodized Silver / Champagne / Black", "Qualicoat Powder Coated (any RAL color)", "Sublimated Wood Finish"],
     applications: ["Luxury Balconies & Penthouses", "Retail Stores & Frontages", "Hotels & Premium Lodges"],
-    imageUrl: "/images/products/aluminum-doors.png",
+    imageUrl: "/images/products/aluminum-doors.jpg",
   },
   "facades": {
     title: "Facades & Curtain Walls",

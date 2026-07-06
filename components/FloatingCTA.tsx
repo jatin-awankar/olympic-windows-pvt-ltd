@@ -8,7 +8,7 @@ export default function FloatingCTA() {
   const [mounted, setMounted] = useState(false);
   const [hoveredButton, setHoveredButton] = useState<"phone" | "whatsapp" | null>(null);
 
-  const whatsappNumber = "919167394442"; 
+  const whatsappNumber = "919167394442";
   const phoneNumber = "+919167394442";
 
   useEffect(() => {

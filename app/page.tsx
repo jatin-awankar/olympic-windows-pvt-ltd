@@ -33,7 +33,7 @@ export default function Home() {
     {
       title: "Women Empowerment & Sustainable Recycling",
       desc: "We are committed to Environmental Responsibility and Innovative Recycling Practices.",
-      bgImage: "/images/hero/slide-4.png",
+      bgImage: "/images/hero/slide-4.jpg",
       btnText: "View More",
       btnHref: "/impact",
     },
@@ -111,7 +111,7 @@ export default function Home() {
       title: "Aluminum Doors",
       desc: "Heavy-duty sliding, glazed, folding, and swing doors offering smooth operations, structural durability, and robust security.",
       href: "/products/aluminum-doors",
-      imageUrl: "/images/products/aluminum-doors.png",
+      imageUrl: "/images/products/aluminum-doors.jpg",
     },
     {
       title: "Facades & Curtain Walls",
@@ -162,7 +162,7 @@ export default function Home() {
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage: `linear-gradient(to right, rgba(10, 17, 34, 0.92) 20%, rgba(10, 17, 34, 0.4) 100%), url(${heroSlides[currentSlide].bgImage})`
