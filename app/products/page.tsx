@@ -11,28 +11,28 @@ export default function ProductsIndex() {
       title: "Aluminum Windows",
       desc: "Precision engineered casement, sliding, and tilt-and-turn window systems. Specially designed to manage high wind loads and heavy rainfall while maintaining slim sights.",
       specs: ["Profile: Thermal Break / Non-Thermal Break", "Glass: Double Glazed, Soundproof, Tinted", "Hardware: Multi-Point Locking Systems", "Monsoon Rating: Wind load up to 2.5 kPa"],
-      imageUrl: "/images/products/aluminum-windows.jpg",
+      imageUrl: "/images/products/aluminum-windows.webp",
     },
     {
       slug: "aluminum-doors",
       title: "Aluminum Doors",
       desc: "High-security sliding, folding, and swing doors built for expansive high-rise balconies and heavy commercial traffic. Offers silent, smooth operations.",
       specs: ["Profile: Heavy-Duty Reinforced Aluminum", "Glass: Tempered / Laminated Safety Glass", "Operations: Lift-and-slide, bi-fold, swing", "Monsoon Rating: Fully weather-sealed gaskets"],
-      imageUrl: "/images/products/aluminum-doors.jpg",
+      imageUrl: "/images/products/aluminum-doors.webp",
     },
     {
       slug: "facades",
       title: "Facades & Curtain Walls",
       desc: "Structural glazed facade and curtain walling systems providing high-thermal insulation and clean structural continuity for luxury commercial and residential facades.",
       specs: ["System: Semi-unitized / Unitized Facades", "Glass: Low-E, Thermal insulated structural double glazing", "Materials: High-grade 6063-T6 alloy extrusion", "Monsoon Rating: Fully wind Rig tested"],
-      imageUrl: "/images/products/facades.png",
+      imageUrl: "/images/products/facades.webp",
     },
     {
       slug: "aluminum-fins",
       title: "Aluminum Architectural Fins",
       desc: "Exterior louvers and architectural fins that reduce solar heat ingress, lower cooling requirements, and introduce modern geometric styling to facade contours.",
       specs: ["Profile: Customizable aerofoil / rectangular shapes", "Finishes: PVDF coated, powder coated, anodized", "Application: Fixed / motorized adjustments", "Benefit: Solar shading & energy reduction"],
-      imageUrl: "/images/products/aluminum-fins.jpg",
+      imageUrl: "/images/products/aluminum-fins.webp",
     },
   ];
 

@@ -34,7 +34,7 @@ export default function Footer() {
         <div className="flex flex-col space-y-4">
           <Link href="/" className="flex items-center space-x-3 group">
             <Image
-              src="/images/logo/logo-sm.png"
+              src="/images/logo/logo-sm.webp"
               alt="Olympic Windows Logo"
               width={36}
               height={36}

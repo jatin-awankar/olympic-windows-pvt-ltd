@@ -7,6 +7,22 @@ import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const menuContainerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.04,
+      delayChildren: 0.05,
+    },
+  },
+} as const;
+
+const menuItemVariants = {
+  hidden: { opacity: 0, y: 12 },
+  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 350, damping: 25 } },
+} as const;
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
@@ -54,16 +70,22 @@ export default function Navbar() {
   const isProductsActive = () => pathname.startsWith("/products");
 
   return (
-    <header className={`sticky top-0 z-50 w-full border-b border-border-custom text-text-inverse shadow-sm transition-colors duration-300 ${scrolled ? "bg-primary/95 backdrop-blur-md" : "bg-primary"}`}>
-      <div className="mx-auto flex max-w-7xl h-20 items-center justify-between px-6 md:px-10">
-
+    <header
+      className={`sticky top-0 z-50 w-full border-b transition-all duration-300 text-text-inverse ${
+        scrolled
+          ? "bg-primary/95 backdrop-blur-md border-white/10 shadow-md"
+          : "bg-primary border-transparent"
+      }`}
+    >
+      <div className="mx-auto flex max-w-7xl px-6 md:px-10 h-20 items-center justify-between">
+        {/* Brand Logo */}
         <Link href="/" className="flex items-center space-x-3 group">
           <Image
-            src="/images/logo/logo-sm.png"
+            src="/images/logo/logo-sm.webp"
             alt="Olympic Windows Logo"
             width={36}
             height={36}
-            className="h-9 w-9 object-contain"
+            className="h-9 w-9 object-contain transition-transform duration-300 group-hover:scale-105"
             priority
           />
           <div className="flex flex-col">
@@ -76,6 +98,7 @@ export default function Navbar() {
           </div>
         </Link>
 
+        {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center space-x-8 font-accent text-sm relative">
           {navLinks.map((link) => {
             const active = isActive(link.href);
@@ -97,6 +120,7 @@ export default function Navbar() {
             );
           })}
 
+          {/* Products Dropdown Trigger */}
           <div
             className="relative py-2"
             onMouseEnter={() => setIsProductsDropdownOpen(true)}
@@ -110,16 +134,20 @@ export default function Navbar() {
           >
             <button
               onClick={() => setIsProductsDropdownOpen(!isProductsDropdownOpen)}
-              className="flex items-center space-x-1 cursor-pointer transition-colors duration-200 hover:text-accent text-text-inverse focus:outline-none relative"
+              className={`flex items-center space-x-1 cursor-pointer transition-colors duration-200 focus:outline-none relative ${
+                isProductsActive() || isProductsDropdownOpen
+                  ? "text-accent font-medium"
+                  : "text-text-inverse hover:text-accent"
+              }`}
             >
-              <span className={isProductsActive() ? "text-accent font-medium" : ""}>Products</span>
+              <span>Products</span>
               <motion.div
                 animate={{ rotate: isProductsDropdownOpen ? 180 : 0 }}
                 transition={{ duration: 0.2 }}
               >
                 <ChevronDown className="h-4 w-4" />
               </motion.div>
-              {isProductsActive() && !isProductsDropdownOpen && (
+              {isProductsActive() && (
                 <motion.span
                   layoutId="nav-underline"
                   className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent"
@@ -128,31 +156,39 @@ export default function Navbar() {
               )}
             </button>
 
+            {/* Desktop Dropdown Menu */}
             <AnimatePresence>
               {isProductsDropdownOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  initial={{ opacity: 0, y: 10, scale: 0.98 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute left-0 mt-3 w-56 bg-primary-light border border-border-custom border-t-2 border-t-accent shadow-lg origin-top-left"
+                  exit={{ opacity: 0, y: 10, scale: 0.98 }}
+                  transition={{ duration: 0.15, ease: "easeOut" }}
+                  className="absolute left-0 mt-3 w-64 bg-primary-light/98 backdrop-blur-md border border-white/10 rounded-sm shadow-xl origin-top-left z-50"
                 >
-                  <div className="py-2">
+                  <div className="py-2.5 px-1">
                     <Link
                       href="/products"
                       onClick={() => setIsProductsDropdownOpen(false)}
-                      className="block px-4 py-2 text-sm text-text-inverse hover:bg-primary hover:text-accent transition-colors"
+                      className={`block px-4 py-2 text-sm rounded-sm transition-colors duration-200 ${
+                        pathname === "/products"
+                          ? "text-accent bg-primary/45 font-medium"
+                          : "text-text-inverse hover:bg-primary/40 hover:text-accent"
+                      }`}
                     >
                       All Products
                     </Link>
-                    <div className="border-t border-border-custom/30 my-1" />
+                    <div className="border-t border-white/5 my-1.5 mx-3" />
                     {productLinks.map((link) => (
                       <Link
                         key={link.name}
                         href={link.href}
                         onClick={() => setIsProductsDropdownOpen(false)}
-                        className={`block px-4 py-2 text-sm hover:bg-primary hover:text-accent transition-colors ${isActive(link.href) ? "text-accent font-medium" : "text-text-inverse"
-                          }`}
+                        className={`block px-4 py-2 text-sm rounded-sm transition-colors duration-200 ${
+                          isActive(link.href)
+                            ? "text-accent bg-primary/45 font-medium"
+                            : "text-text-inverse hover:bg-primary/40 hover:text-accent"
+                        }`}
                       >
                         {link.name}
                       </Link>
@@ -164,15 +200,17 @@ export default function Navbar() {
           </div>
         </nav>
 
+        {/* Action Buttons (Desktop) */}
         <div className="hidden lg:flex items-center space-x-6">
           <Link
             href="/contact"
-            className="bg-accent hover:bg-accent-light text-white font-accent font-semibold text-sm px-6 py-3 rounded-sm transition-all duration-200 active:scale-95 shadow-sm"
+            className="bg-accent hover:bg-accent-light text-white font-accent font-semibold text-sm px-6 py-3 rounded-sm transition-all duration-200 active:scale-95 shadow-sm hover:shadow-md"
           >
             Book Consultation
           </Link>
         </div>
 
+        {/* Mobile Nav Icons */}
         <div className="flex lg:hidden items-center space-x-4">
           <a
             href="tel:+919167394442"
@@ -191,6 +229,7 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Mobile Drawer Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -198,21 +237,29 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}
-            className="lg:hidden fixed inset-x-0 bottom-0 top-20 z-40 w-full bg-primary/98 backdrop-blur-md text-text-inverse flex flex-col px-6 py-8 space-y-6 overflow-y-auto h-[calc(100dvh-5rem)]"
+            className="lg:hidden fixed inset-x-0 bottom-0 top-20 z-40 w-full bg-primary/98 backdrop-blur-md text-text-inverse flex flex-col px-6 py-8 overflow-y-auto h-[calc(100dvh-5rem)]"
           >
-            <nav className="flex flex-col space-y-5 font-accent text-lg">
+            <motion.nav
+              variants={menuContainerVariants}
+              initial="hidden"
+              animate="show"
+              className="flex flex-col space-y-5 font-accent text-lg"
+            >
               {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`transition-colors ${isActive(link.href) ? "text-accent font-semibold" : "text-text-inverse"}`}
-                >
-                  {link.name}
-                </Link>
+                <motion.div key={link.name} variants={menuItemVariants}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`transition-colors duration-200 block ${
+                      isActive(link.href) ? "text-accent font-semibold" : "text-text-inverse hover:text-accent"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
               ))}
 
-              <div className="border-t border-border-custom/25 pt-4">
+              <motion.div variants={menuItemVariants} className="border-t border-white/10 pt-4">
                 <div className="font-semibold text-text-muted text-xs uppercase tracking-wider mb-3">
                   Products
                 </div>
@@ -220,7 +267,9 @@ export default function Navbar() {
                   <Link
                     href="/products"
                     onClick={() => setIsOpen(false)}
-                    className={`text-base ${isActive("/products") ? "text-accent font-semibold" : "text-text-inverse"}`}
+                    className={`text-base block transition-colors duration-200 ${
+                      isActive("/products") ? "text-accent font-semibold" : "text-text-inverse hover:text-accent"
+                    }`}
                   >
                     All Products
                   </Link>
@@ -229,30 +278,35 @@ export default function Navbar() {
                       key={link.name}
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className={`text-base ${isActive(link.href) ? "text-accent font-semibold" : "text-text-inverse"}`}
+                      className={`text-base block transition-colors duration-200 ${
+                        isActive(link.href) ? "text-accent font-semibold" : "text-text-inverse hover:text-accent"
+                      }`}
                     >
                       {link.name}
                     </Link>
                   ))}
                 </div>
-              </div>
-            </nav>
+              </motion.div>
 
-            <div className="border-t border-border-custom/30 pt-6 flex flex-col space-y-4 mt-auto">
-              <Link
-                href="/contact"
-                onClick={() => setIsOpen(false)}
-                className="bg-accent hover:bg-accent-light text-white text-center font-accent font-semibold py-3.5 rounded-sm active:scale-95 transition-transform shadow-md"
+              <motion.div
+                variants={menuItemVariants}
+                className="border-t border-white/10 pt-6 flex flex-col space-y-4 mt-auto"
               >
-                Book Consultation
-              </Link>
-              <a
-                href="tel:+919167394442"
-                className="border border-border-custom hover:border-accent text-center py-3.5 rounded-sm text-text-inverse hover:text-accent font-accent font-semibold active:scale-95 transition-transform"
-              >
-                Call: +91 91673 94442
-              </a>
-            </div>
+                <Link
+                  href="/contact"
+                  onClick={() => setIsOpen(false)}
+                  className="bg-accent hover:bg-accent-light text-white text-center font-accent font-semibold py-3.5 rounded-sm active:scale-95 transition-all shadow-md block hover:shadow-lg"
+                >
+                  Book Consultation
+                </Link>
+                <a
+                  href="tel:+919167394442"
+                  className="border border-white/10 hover:border-accent text-center py-3.5 rounded-sm text-text-inverse hover:text-accent font-accent font-semibold active:scale-95 transition-all block"
+                >
+                  Call: +91 91673 94442
+                </a>
+              </motion.div>
+            </motion.nav>
           </motion.div>
         )}
       </AnimatePresence>

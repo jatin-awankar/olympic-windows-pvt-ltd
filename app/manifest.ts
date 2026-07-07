@@ -13,19 +13,19 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#D4AF37",
     icons: [
       {
-        src: "/images/logo/logo-sm.png",
+        src: "/images/logo/logo-sm.webp",
         sizes: "128x128",
-        type: "image/png",
+        type: "image/webp",
       },
       {
-        src: "/images/logo/logo-md.png",
+        src: "/images/logo/logo-md.webp",
         sizes: "256x256",
-        type: "image/png",
+        type: "image/webp",
       },
       {
-        src: "/images/logo/logo-high.png",
+        src: "/images/logo/logo-high.webp",
         sizes: "512x512",
-        type: "image/png",
+        type: "image/webp",
       },
     ],
   };

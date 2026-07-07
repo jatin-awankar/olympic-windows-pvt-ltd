@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/logo/logo-high.png",
+        url: "/images/logo/logo-high.webp",
         width: 512,
         height: 512,
         alt: "Olympic Windows Logo",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Olympic Windows | Premium Aluminum Windows & Doors",
     description: "European precision engineered aluminum windows, doors, facades, and fins.",
-    images: ["/images/logo/logo-high.png"],
+    images: ["/images/logo/logo-high.webp"],
   },
   robots: {
     index: true,
@@ -86,7 +86,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               "name": "Olympic Windows",
-              "image": "https://olympicwindows.in/images/logo/logo-high.png",
+              "image": "https://olympicwindows.in/images/logo/logo-high.webp",
               "@id": "https://olympicwindows.in/#organization",
               "url": "https://olympicwindows.in",
               "telephone": "+919167394442",

@@ -14,7 +14,7 @@ export default function ProjectsIndex() {
       towers: "175 Towers",
       sqm: "92,000 sqm",
       units: "70,000+ Units",
-      imageUrl: "/images/projects/casa-rio.png",
+      imageUrl: "/images/projects/casa-rio.webp",
     },
     {
       slug: "palava-city",
@@ -24,7 +24,7 @@ export default function ProjectsIndex() {
       towers: "92 Towers",
       sqm: "128,000 sqm",
       units: "82,000+ Units",
-      imageUrl: "/images/projects/palava-city.png",
+      imageUrl: "/images/projects/palava-city.webp",
     },
     {
       slug: "lodha-amara",
@@ -34,7 +34,7 @@ export default function ProjectsIndex() {
       towers: "17 Towers",
       sqm: "48,000 sqm",
       units: "17,500+ Units",
-      imageUrl: "/images/projects/lodha-amara.png",
+      imageUrl: "/images/projects/lodha-amara.webp",
     },
   ];
 

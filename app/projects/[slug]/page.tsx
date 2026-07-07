@@ -37,7 +37,7 @@ const projectRegistry: Record<string, ProjectDetailData> = {
       "Engineered double EPDM weather-strip gaskets designed to seal tightly under high wind pressure.",
       "On-site installation leveling audits conducted by our dedicated inspection engineers.",
     ],
-    imageUrl: "/images/projects/casa-rio.png",
+    imageUrl: "/images/projects/casa-rio.webp",
   },
   "palava-city": {
     name: "Palava City",
@@ -58,7 +58,7 @@ const projectRegistry: Record<string, ProjectDetailData> = {
       "Custom profile frames supporting double glazing to minimize thermal ingress.",
       "Thick structural mullion shapes anchors certified for extreme wind ratings.",
     ],
-    imageUrl: "/images/projects/palava-city.png",
+    imageUrl: "/images/projects/palava-city.webp",
   },
   "lodha-amara": {
     name: "Lodha Amara",
@@ -79,7 +79,7 @@ const projectRegistry: Record<string, ProjectDetailData> = {
       "Acoustic damping frame sections matched with soundproof double glazing.",
       "Integrated slim window styles with hidden drainage channels to maintain exterior aesthetics.",
     ],
-    imageUrl: "/images/projects/lodha-amara.png",
+    imageUrl: "/images/projects/lodha-amara.webp",
   },
 };
 

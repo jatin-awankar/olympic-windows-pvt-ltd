@@ -12,7 +12,7 @@ export default function Home() {
     {
       title: "Setting New Standards in Aluminum Windows and Doors",
       desc: "A European-based company, bringing cutting-edge design and technology to India.",
-      bgImage: "/images/hero/slide-1.jpg",
+      bgImage: "/images/hero/slide-1.webp",
       btnText: "Read More",
       btnHref: "/about",
     },
@@ -26,21 +26,21 @@ export default function Home() {
     {
       title: "Engineered to Perfection – Our Premium Range of Windows and Doors",
       desc: "Tailored solutions designed for every space, ensuring durability, performance, and aesthetic excellence.",
-      bgImage: "/images/hero/slide-3.jpg",
+      bgImage: "/images/hero/slide-3.webp",
       btnText: "View Products",
       btnHref: "/products",
     },
     {
       title: "Women Empowerment & Sustainable Recycling",
       desc: "We are committed to Environmental Responsibility and Innovative Recycling Practices.",
-      bgImage: "/images/hero/slide-4.jpg",
+      bgImage: "/images/hero/slide-4.webp",
       btnText: "View More",
       btnHref: "/impact",
     },
     {
       title: "Elevate Your Spaces with European-Standard Aluminum Windows & Doors",
       desc: "Custom Designs • European Standards • High Durability",
-      bgImage: "/images/hero/slide-5.jpg",
+      bgImage: "/images/hero/slide-5.webp",
       btnText: "Contact Us",
       btnHref: "/contact",
     },
@@ -105,25 +105,25 @@ export default function Home() {
       title: "Aluminum Windows",
       desc: "We provide a huge variety of window frames according to our client's design and order, combining sliding and openable features.",
       href: "/products/aluminum-windows",
-      imageUrl: "/images/products/aluminum-windows.jpg",
+      imageUrl: "/images/products/aluminum-windows.webp",
     },
     {
       title: "Aluminum Doors",
       desc: "Heavy-duty sliding, glazed, folding, and swing doors offering smooth operations, structural durability, and robust security.",
       href: "/products/aluminum-doors",
-      imageUrl: "/images/products/aluminum-doors.jpg",
+      imageUrl: "/images/products/aluminum-doors.webp",
     },
     {
       title: "Facades & Curtain Walls",
       desc: "High-performance structural glass facades engineered for extreme wind resistance and modern architectural aesthetics.",
       href: "/products/facades",
-      imageUrl: "/images/products/facades.png",
+      imageUrl: "/images/products/facades.webp",
     },
     {
       title: "Aluminum Fins",
       desc: "Premium solar shading and louvers profiles combining structural thermal efficiency with sleek geometric elegance.",
       href: "/products/aluminum-fins",
-      imageUrl: "/images/products/aluminum-fins.jpg",
+      imageUrl: "/images/products/aluminum-fins.webp",
     },
   ];
 
@@ -133,21 +133,21 @@ export default function Home() {
       desc: "Delivered 175 towers, encompassing 70,000+ units and 92,000 sqm of fenestration.",
       stat: "175 Towers",
       href: "/projects/casa-rio",
-      imageUrl: "/images/projects/casa-rio.png",
+      imageUrl: "/images/projects/casa-rio.webp",
     },
     {
       name: "Palava City",
       desc: "Completed 92 towers (18 stories each), covering 82,000 units and 128,000 sqm.",
       stat: "92 Towers",
       href: "/projects/palava-city",
-      imageUrl: "/images/projects/palava-city.png",
+      imageUrl: "/images/projects/palava-city.webp",
     },
     {
       name: "Lodha Amara",
       desc: "Delivered 17 towers (30 stories each) with 17,500 units and 48,000 sqm, plus ongoing phases.",
       stat: "17 Towers",
       href: "/projects/lodha-amara",
-      imageUrl: "/images/projects/lodha-amara.png",
+      imageUrl: "/images/projects/lodha-amara.webp",
     },
   ];
 
@@ -156,19 +156,17 @@ export default function Home() {
 
       {/* 1. Hero Section (Dynamic Slider) */}
       <section className="relative h-[80vh] min-h-[600px] flex items-center bg-primary text-text-inverse overflow-hidden">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentSlide}
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="absolute inset-0 bg-cover bg-center"
+        {heroSlides.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out ${
+              index === currentSlide ? "opacity-100 scale-100 z-0" : "opacity-0 scale-105 pointer-events-none z-0"
+            }`}
             style={{
-              backgroundImage: `linear-gradient(to right, rgba(10, 17, 34, 0.92) 20%, rgba(10, 17, 34, 0.4) 100%), url(${heroSlides[currentSlide].bgImage})`
+              backgroundImage: `linear-gradient(to right, rgba(10, 17, 34, 0.92) 20%, rgba(10, 17, 34, 0.4) 100%), url(${slide.bgImage})`,
             }}
           />
-        </AnimatePresence>
+        ))}
 
         {/* Structural Grid overlays */}
         <div className="absolute inset-0 opacity-15 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
@@ -287,7 +285,7 @@ export default function Home() {
           >
             <div
               className="absolute inset-3 bg-cover bg-center rounded-sm bg-slate-900"
-              style={{ backgroundImage: `url('/images/general/cta-bg.jpg')` }}
+              style={{ backgroundImage: `url('/images/general/cta-bg.webp')` }}
             />
           </motion.div>
 

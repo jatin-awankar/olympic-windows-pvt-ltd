@@ -36,7 +36,7 @@ const productRegistry: Record<string, ProductData> = {
     },
     finishes: ["Anodized Silver / Bronze", "Qualicoat Powder Coated (any RAL color)", "Wood-grain textured sublimation"],
     applications: ["Luxury High-Rise Residential", "Premium Coastal Villas", "Hotels & Commercial Offices"],
-    imageUrl: "/images/products/aluminum-windows.jpg",
+    imageUrl: "/images/products/aluminum-windows.webp",
   },
   "aluminum-doors": {
     title: "Aluminum Doors",
@@ -59,7 +59,7 @@ const productRegistry: Record<string, ProductData> = {
     },
     finishes: ["Anodized Silver / Champagne / Black", "Qualicoat Powder Coated (any RAL color)", "Sublimated Wood Finish"],
     applications: ["Luxury Balconies & Penthouses", "Retail Stores & Frontages", "Hotels & Premium Lodges"],
-    imageUrl: "/images/products/aluminum-doors.jpg",
+    imageUrl: "/images/products/aluminum-doors.webp",
   },
   "facades": {
     title: "Facades & Curtain Walls",
@@ -82,7 +82,7 @@ const productRegistry: Record<string, ProductData> = {
     },
     finishes: ["Qualicoat Powder Coated", "Anodized Dark Bronze / Charcoal Black", "PVDF Coated finishes"],
     applications: ["Commercial Tall Office Towers", "High-Rise Residential Skins", "Retail Glass Atriums & Vaults"],
-    imageUrl: "/images/products/facades.png",
+    imageUrl: "/images/products/facades.webp",
   },
   "aluminum-fins": {
     title: "Aluminum Architectural Fins",
@@ -104,7 +104,7 @@ const productRegistry: Record<string, ProductData> = {
     },
     finishes: ["Qualicoat Premium Powder Coated", "Anodized Silver / Dark Bronze", "PVDF 3-Coat finishes"],
     applications: ["Office Complex Sun Screening", "Institutional Buildings", "Residential Window Shading screens"],
-    imageUrl: "/images/products/aluminum-fins.jpg",
+    imageUrl: "/images/products/aluminum-fins.webp",
   },
 };
 
