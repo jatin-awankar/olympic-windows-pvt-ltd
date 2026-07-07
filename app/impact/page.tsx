@@ -34,8 +34,14 @@ export default function Impact() {
 
       {/* Page Header */}
       <section className="bg-primary text-text-inverse py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px]" />
-        <div className="relative mx-auto max-w-7xl px-6 md:px-10 w-full flex flex-col space-y-4">
+        <div
+          className="absolute inset-0 opacity-20 bg-cover bg-center pointer-events-none"
+          style={{
+            backgroundImage: `linear-gradient(to right, rgba(10, 17, 34, 0.95) 30%, rgba(10, 17, 34, 0.6) 100%), url('/images/headers/impact.webp')`
+          }}
+        />
+        <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+        <div className="relative mx-auto max-w-7xl px-6 md:px-10 w-full flex flex-col space-y-4 z-10">
           <span className="text-accent font-accent font-semibold tracking-wider text-xs uppercase">
             Sustainability & Social Responsibility
           </span>
