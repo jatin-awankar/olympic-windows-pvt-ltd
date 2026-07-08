@@ -65,7 +65,7 @@ export default function Contact() {
               </a>
 
               <a
-                href="mailto:info@olympicwindows.co.in"
+                href="mailto:info@olympicwindows.in"
                 className="flex items-center space-x-4 p-4 border border-border-custom/40 rounded-sm bg-surface-alt/25 hover:border-accent/40 hover:bg-surface-alt/50 transition-all duration-200 group"
               >
                 <div className="h-10 w-10 bg-surface border border-border-custom/50 flex items-center justify-center text-accent rounded-sm shrink-0 transition-colors group-hover:bg-accent group-hover:text-white">
@@ -73,7 +73,7 @@ export default function Contact() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] uppercase font-bold text-text-muted tracking-wider">Email Inquiry</span>
-                  <span className="text-sm font-semibold text-primary font-accent">info@olympicwindows.co.in</span>
+                  <span className="text-sm font-semibold text-primary font-accent">info@olympicwindows.in</span>
                 </div>
               </a>
 

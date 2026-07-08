@@ -165,7 +165,7 @@ export default function Footer() {
           </div>
           <div className="flex items-center space-x-3 text-sm text-text-muted">
             <Mail className="h-4 w-4 text-accent shrink-0" />
-            <a href="mailto:info@olympicwindows.co.in" className="hover:text-accent transition-colors duration-150">info@olympicwindows.co.in</a>
+            <a href="mailto:info@olympicwindows.in" className="hover:text-accent transition-colors duration-150">info@olympicwindows.in</a>
           </div>
         </div>
 
