@@ -9,6 +9,11 @@
       "source": "/clients",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/author/:path*",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
