@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Play, X, ChevronLeft, ChevronRight, Eye } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Eye } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface GalleryImage {
@@ -57,7 +57,6 @@ const categories = ["All", "Projects", "Products", "Facades"];
 export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   // Filtered images based on active tab selection
   const filteredImages = galleryRegistry.filter(
@@ -82,69 +81,35 @@ export default function Gallery() {
 
   return (
     <div className="flex flex-col w-full font-sans overflow-hidden">
-      {/* Page Header Hero */}
-      <section className="bg-primary text-text-inverse py-20 relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-20 bg-cover bg-center pointer-events-none"
-          style={{
-            backgroundImage: `linear-gradient(to right, rgba(10, 17, 34, 0.95) 30%, rgba(10, 17, 34, 0.6) 100%), url('/images/general/cta-bg.webp')`,
-          }}
-        />
-        <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-6 md:px-10 w-full flex flex-col space-y-4 z-10">
-          <span className="text-accent font-accent font-semibold tracking-wider text-xs uppercase">
-            Visual Showcases
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Media Gallery</h1>
-          <p className="text-lg text-text-muted max-w-2xl leading-relaxed">
-            Explore our premium installations, specialized aluminum profile applications, and manufacturing precision.
-          </p>
-        </div>
-      </section>
+      <section className="relative h-[90vh] min-h-[450px] flex items-center bg-primary text-text-inverse overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/images/headers/projects.webp"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0"
+        >
+          <source src="/video.webm" type="video/webm" />
+          <source src="/video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
-      {/* Featured Video Section */}
-      <section className="bg-surface py-16 border-b border-border-custom/30">
-        <div className="mx-auto max-w-7xl px-6 md:px-10 flex flex-col space-y-10">
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <h2 className="text-2xl md:text-3xl font-bold text-primary font-accent">Featured Corporate Video</h2>
-            <div className="w-12 h-1 bg-accent mx-auto" />
-            <p className="text-sm text-text-secondary leading-relaxed">
-              Take a virtual walkthrough of our engineering processes and custom glazing installations.
+        {/* Dark Architectural Mask & Grid Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/30 z-10" />
+        <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none z-10" />
+
+        {/* Header Text overlay */}
+        <div className="relative mx-auto max-w-7xl px-6 md:px-10 w-full z-20 flex flex-col justify-center h-full">
+          <div className="max-w-2xl flex flex-col space-y-4">
+            <span className="text-accent font-accent font-semibold tracking-wider text-xs uppercase">
+              Visual Showcases
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">Media Gallery</h1>
+            <p className="text-base md:text-lg text-text-muted leading-relaxed">
+              Explore our premium installations, specialized aluminum profile applications, and manufacturing precision captured in motion.
             </p>
-          </div>
-
-          {/* Responsive Performance-Optimized Video Player */}
-          <div className="relative aspect-video max-w-4xl mx-auto w-full bg-primary-dark border border-border-custom/40 rounded-sm shadow-card overflow-hidden group">
-            {!isVideoPlaying ? (
-              <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-auto">
-                <Image
-                  src="/images/general/cta-bg.webp"
-                  alt="Corporate Video Poster"
-                  fill
-                  priority
-                  className="object-cover transition-transform duration-500 group-hover:scale-102"
-                />
-                <div className="absolute inset-0 bg-black/40 transition-colors group-hover:bg-black/50" />
-                <button
-                  onClick={() => setIsVideoPlaying(true)}
-                  className="relative z-20 flex items-center justify-center w-16 h-16 bg-accent hover:bg-accent-light text-white rounded-full shadow-lg transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  aria-label="Play Corporate Video"
-                >
-                  <Play className="h-6 w-6 fill-current ml-1" />
-                </button>
-              </div>
-            ) : (
-              <video
-                src="" // Placeholder fallback source - to be updated by client manually
-                controls
-                autoPlay
-                preload="metadata"
-                className="w-full h-full object-cover"
-                aria-label="Corporate video playback player"
-              >
-                Your browser does not support the video tag.
-              </video>
-            )}
           </div>
         </div>
       </section>
@@ -169,11 +134,10 @@ export default function Gallery() {
                     setSelectedCategory(cat);
                     setActiveImageIndex(null); // Reset lightbox indexes
                   }}
-                  className={`px-4 py-2 text-xs font-accent font-semibold tracking-wider rounded-sm transition-all duration-200 border ${
-                    selectedCategory === cat
+                  className={`px-4 py-2 text-xs font-accent font-semibold tracking-wider rounded-sm transition-all duration-200 border ${selectedCategory === cat
                       ? "bg-accent border-accent text-white shadow-sm"
                       : "bg-surface border-border-custom/40 text-text-secondary hover:text-accent hover:border-accent"
-                  }`}
+                    }`}
                 >
                   {cat}
                 </button>

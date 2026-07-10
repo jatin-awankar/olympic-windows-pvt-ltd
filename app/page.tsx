@@ -162,7 +162,7 @@ export default function Home() {
     <div className="flex flex-col w-full font-sans overflow-hidden">
 
       {/* 1. Hero Section (Dynamic Slider) */}
-      <section className="relative h-[80vh] min-h-[600px] flex items-center bg-primary text-text-inverse overflow-hidden">
+      <section className="relative h-[90vh] min-h-[600px] flex items-center bg-primary text-text-inverse overflow-hidden">
         {heroSlides.map((slide, index) => (
           <div
             key={index}
