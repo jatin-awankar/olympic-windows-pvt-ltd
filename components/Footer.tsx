@@ -6,6 +6,7 @@ const quickLinks = [
   { name: "About Us", href: "/about" },
   { name: "Services", href: "/services" },
   { name: "Projects", href: "/projects" },
+  { name: "Gallery", href: "/gallery" },
   { name: "Impact & CSR", href: "/impact" },
   { name: "Contact Us", href: "/contact" },
 ];
@@ -45,7 +46,7 @@ export default function Footer() {
                 OLYMPIC <span className="text-accent group-hover:text-accent-light transition-colors">WINDOWS</span>
               </span>
               <span className="text-[8px] uppercase tracking-[0.20em] text-text-muted">
-                European Precision • Indian Scale
+                Setting New Standards
               </span>
             </div>
           </Link>

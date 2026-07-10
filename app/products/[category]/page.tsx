@@ -317,11 +317,13 @@ export default async function ProductCategoryDetail({ params }: PageProps) {
               </div>
               <div className="pt-4 mt-auto">
                 <a
-                  href="/contact"
+                  href="/Catalogue.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full border border-accent hover:bg-accent text-accent hover:text-white py-3.5 rounded-sm text-xs font-accent font-semibold uppercase tracking-wider transition-colors inline-flex items-center justify-center space-x-2 active:scale-95 transition-transform"
                 >
                   <Download className="h-4 w-4" />
-                  <span>Request Full Catalog PDF</span>
+                  <span>Full Catalog PDF</span>
                 </a>
               </div>
             </div>

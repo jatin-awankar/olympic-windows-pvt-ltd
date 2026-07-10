@@ -71,11 +71,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full border-b transition-all duration-300 text-text-inverse ${
-        scrolled
+      className={`sticky top-0 z-50 w-full border-b transition-all duration-300 text-text-inverse ${scrolled
           ? "bg-primary/95 backdrop-blur-md border-white/10 shadow-md"
           : "bg-primary border-transparent"
-      }`}
+        }`}
     >
       <div className="mx-auto flex max-w-7xl px-6 md:px-10 h-20 items-center justify-between">
         {/* Brand Logo */}
@@ -93,7 +92,7 @@ export default function Navbar() {
               OLYMPIC <span className="text-accent group-hover:text-accent-light transition-colors">WINDOWS</span>
             </span>
             <span className="text-[8px] uppercase tracking-[0.20em] text-text-muted">
-              European Precision • Indian Scale
+              Setting New Standards
             </span>
           </div>
         </Link>
@@ -134,11 +133,10 @@ export default function Navbar() {
           >
             <button
               onClick={() => setIsProductsDropdownOpen(!isProductsDropdownOpen)}
-              className={`flex items-center space-x-1 cursor-pointer transition-colors duration-200 focus:outline-none relative ${
-                isProductsActive() || isProductsDropdownOpen
+              className={`flex items-center space-x-1 cursor-pointer transition-colors duration-200 focus:outline-none relative ${isProductsActive() || isProductsDropdownOpen
                   ? "text-accent font-medium"
                   : "text-text-inverse hover:text-accent"
-              }`}
+                }`}
             >
               <span>Products</span>
               <motion.div
@@ -170,11 +168,10 @@ export default function Navbar() {
                     <Link
                       href="/products"
                       onClick={() => setIsProductsDropdownOpen(false)}
-                      className={`block px-4 py-2 text-sm rounded-sm transition-colors duration-200 ${
-                        pathname === "/products"
+                      className={`block px-4 py-2 text-sm rounded-sm transition-colors duration-200 ${pathname === "/products"
                           ? "text-accent bg-primary/45 font-medium"
                           : "text-text-inverse hover:bg-primary/40 hover:text-accent"
-                      }`}
+                        }`}
                     >
                       All Products
                     </Link>
@@ -184,11 +181,10 @@ export default function Navbar() {
                         key={link.name}
                         href={link.href}
                         onClick={() => setIsProductsDropdownOpen(false)}
-                        className={`block px-4 py-2 text-sm rounded-sm transition-colors duration-200 ${
-                          isActive(link.href)
+                        className={`block px-4 py-2 text-sm rounded-sm transition-colors duration-200 ${isActive(link.href)
                             ? "text-accent bg-primary/45 font-medium"
                             : "text-text-inverse hover:bg-primary/40 hover:text-accent"
-                        }`}
+                          }`}
                       >
                         {link.name}
                       </Link>
@@ -250,9 +246,8 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`transition-colors duration-200 block ${
-                      isActive(link.href) ? "text-accent font-semibold" : "text-text-inverse hover:text-accent"
-                    }`}
+                    className={`transition-colors duration-200 block ${isActive(link.href) ? "text-accent font-semibold" : "text-text-inverse hover:text-accent"
+                      }`}
                   >
                     {link.name}
                   </Link>
@@ -267,9 +262,8 @@ export default function Navbar() {
                   <Link
                     href="/products"
                     onClick={() => setIsOpen(false)}
-                    className={`text-base block transition-colors duration-200 ${
-                      isActive("/products") ? "text-accent font-semibold" : "text-text-inverse hover:text-accent"
-                    }`}
+                    className={`text-base block transition-colors duration-200 ${isActive("/products") ? "text-accent font-semibold" : "text-text-inverse hover:text-accent"
+                      }`}
                   >
                     All Products
                   </Link>
@@ -278,9 +272,8 @@ export default function Navbar() {
                       key={link.name}
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className={`text-base block transition-colors duration-200 ${
-                        isActive(link.href) ? "text-accent font-semibold" : "text-text-inverse hover:text-accent"
-                      }`}
+                      className={`text-base block transition-colors duration-200 ${isActive(link.href) ? "text-accent font-semibold" : "text-text-inverse hover:text-accent"
+                        }`}
                     >
                       {link.name}
                     </Link>

@@ -44,6 +44,13 @@ export default function Home() {
       btnText: "Contact Us",
       btnHref: "/contact",
     },
+    {
+      title: "Uncompromised Quality, Certified Performance",
+      desc: "Engineered and certified for high-rise wind resistance, absolute watertightness, and superior sound damping.",
+      bgImage: "/images/hero/slide-6.webp",
+      btnText: "Our Specifications",
+      btnHref: "/services",
+    },
   ];
 
   useEffect(() => {
@@ -159,9 +166,8 @@ export default function Home() {
         {heroSlides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out ${
-              index === currentSlide ? "opacity-100 scale-100 z-0" : "opacity-0 scale-105 pointer-events-none z-0"
-            }`}
+            className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out ${index === currentSlide ? "opacity-100 scale-100 z-0" : "opacity-0 scale-105 pointer-events-none z-0"
+              }`}
             style={{
               backgroundImage: `linear-gradient(to right, rgba(10, 17, 34, 0.92) 20%, rgba(10, 17, 34, 0.4) 100%), url(${slide.bgImage})`,
             }}
@@ -300,7 +306,7 @@ export default function Home() {
               Who We Are
             </span>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-primary">
-              We provide the best aluminum windows and doors
+              We design, develop, and deliver aluminum systems for landmark projects
             </h2>
             <div className="h-0.5 w-16 bg-accent" />
             <p className="text-text-secondary leading-relaxed text-base">
