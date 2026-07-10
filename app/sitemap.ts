@@ -31,6 +31,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "casa-rio",
     "palava-city",
     "lodha-amara",
+    "lodha-woods",
+    "lodha-upper-thane",
+    "lodha-premier",
+    "lodha-bella-vita",
+    "lodha-panache",
+    "lodha-giardino",
+    "lodha-iris",
   ];
 
   const sitemapEntries: MetadataRoute.Sitemap = [];

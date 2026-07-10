@@ -50,9 +50,51 @@ const galleryRegistry: GalleryImage[] = [
     alt: "Semi-unitized double glazed structural glass curtain wall design.",
     category: "Facades",
   },
+  {
+    id: 7,
+    src: "/images/machinery/machine-1.png",
+    alt: "Machine-1",
+    category: "Machinery",
+  },
+  {
+    id: 8,
+    src: "/images/machinery/machine-2.jpg",
+    alt: "Machine-2",
+    category: "Machinery",
+  },
+  {
+    id: 9,
+    src: "/images/machinery/machine-3.jpg",
+    alt: "Machine-3",
+    category: "Machinery",
+  },
+  {
+    id: 10,
+    src: "/images/machinery/machine-4.jpg",
+    alt: "Machine-4",
+    category: "Machinery",
+  },
+  {
+    id: 11,
+    src: "/images/machinery/machine-5.jpg",
+    alt: "Machine-5",
+    category: "Machinery",
+  },
+  {
+    id: 12,
+    src: "/images/machinery/machine-6.jpg",
+    alt: "Machine-6",
+    category: "Machinery",
+  },
+  {
+    id: 13,
+    src: "/images/machinery/machine-7.png",
+    alt: "Machine-7",
+    category: "Machinery",
+  },
 ];
 
-const categories = ["All", "Projects", "Products", "Facades"];
+const categories = ["All", "Projects", "Products", "Facades", "Machinery"];
 
 export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -81,35 +123,52 @@ export default function Gallery() {
 
   return (
     <div className="flex flex-col w-full font-sans overflow-hidden">
-      <section className="relative h-[90vh] min-h-[450px] flex items-center bg-primary text-text-inverse overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster="/images/headers/projects.webp"
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0"
-        >
-          <source src="/video.webm" type="video/webm" />
-          <source src="/video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+      {/* Page Header Hero */}
+      <section className="bg-primary text-text-inverse py-20 relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-20 bg-cover bg-center pointer-events-none"
+          style={{
+            backgroundImage: `linear-gradient(to right, rgba(10, 17, 34, 0.95) 30%, rgba(10, 17, 34, 0.6) 100%), url('/images/general/cta-bg.webp')`,
+          }}
+        />
+        <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+        <div className="relative mx-auto max-w-7xl px-6 md:px-10 w-full flex flex-col space-y-4 z-10">
+          <span className="text-accent font-accent font-semibold tracking-wider text-xs uppercase">
+            Visual Showcases
+          </span>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Media Gallery</h1>
+          <p className="text-lg text-text-muted max-w-2xl leading-relaxed">
+            Explore our premium installations, specialized aluminum profile applications, and manufacturing precision.
+          </p>
+        </div>
+      </section>
 
-        {/* Dark Architectural Mask & Grid Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/30 z-10" />
-        <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none z-10" />
-
-        {/* Header Text overlay */}
-        <div className="relative mx-auto max-w-7xl px-6 md:px-10 w-full z-20 flex flex-col justify-center h-full">
-          <div className="max-w-2xl flex flex-col space-y-4">
-            <span className="text-accent font-accent font-semibold tracking-wider text-xs uppercase">
-              Visual Showcases
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">Media Gallery</h1>
-            <p className="text-base md:text-lg text-text-muted leading-relaxed">
-              Explore our premium installations, specialized aluminum profile applications, and manufacturing precision captured in motion.
+      {/* Featured Video Section */}
+      <section className="bg-surface py-16 border-b border-border-custom/30">
+        <div className="mx-auto max-w-7xl px-6 md:px-10 flex flex-col space-y-10">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <h2 className="text-2xl md:text-3xl font-bold text-primary font-accent">Featured Corporate Video</h2>
+            <div className="w-12 h-1 bg-accent mx-auto" />
+            <p className="text-sm text-text-secondary leading-relaxed">
+              Take a virtual walkthrough of our engineering processes and custom glazing installations.
             </p>
+          </div>
+
+          {/* Responsive Performance-Optimized Video Player */}
+          <div className="relative aspect-video max-w-4xl mx-auto w-full bg-primary-dark border border-border-custom/40 rounded-sm shadow-card overflow-hidden group">
+            <video
+              autoPlay
+              loop
+              controls
+              playsInline
+              preload="auto"
+              poster="/images/headers/projects.webp"
+              className="absolute inset-0 w-full h-full object-cover z-10"
+            >
+              <source src="/video.webm" type="video/webm" />
+              <source src="/video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </section>
@@ -135,8 +194,8 @@ export default function Gallery() {
                     setActiveImageIndex(null); // Reset lightbox indexes
                   }}
                   className={`px-4 py-2 text-xs font-accent font-semibold tracking-wider rounded-sm transition-all duration-200 border ${selectedCategory === cat
-                      ? "bg-accent border-accent text-white shadow-sm"
-                      : "bg-surface border-border-custom/40 text-text-secondary hover:text-accent hover:border-accent"
+                    ? "bg-accent border-accent text-white shadow-sm"
+                    : "bg-surface border-border-custom/40 text-text-secondary hover:text-accent hover:border-accent"
                     }`}
                 >
                   {cat}
@@ -145,51 +204,68 @@ export default function Gallery() {
             </div>
           </div>
 
-          {/* Interactive Responsive Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <AnimatePresence mode="popLayout">
-              {filteredImages.map((img, index) => (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3 }}
-                  key={img.id}
-                  onClick={() => setActiveImageIndex(index)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.preventDefault();
-                      setActiveImageIndex(index);
-                    }
-                  }}
-                  className="group relative aspect-[4/3] w-full border border-border-custom/30 rounded-sm overflow-hidden bg-primary-dark shadow-sm hover:shadow-card transition-all cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`Open preview modal for ${img.alt}`}
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  {/* Subtle Interactive Screen Mask */}
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    <div className="text-white flex flex-col items-center space-y-2 transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
-                      <div className="w-10 h-10 rounded-full border border-white/20 bg-white/10 flex items-center justify-center">
-                        <Eye className="h-5 w-5" />
+          {/* Interactive Responsive Grid with Staggered Animations */}
+          <div className="min-h-[400px] relative">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selectedCategory}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.04,
+                    },
+                  },
+                }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              >
+                {filteredImages.map((img, index) => (
+                  <motion.div
+                    key={img.id}
+                    variants={{
+                      hidden: { opacity: 0, y: 15, scale: 0.98 },
+                      visible: { opacity: 1, y: 0, scale: 1 },
+                    }}
+                    transition={{ duration: 0.35, ease: "easeOut" }}
+                    onClick={() => setActiveImageIndex(index)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setActiveImageIndex(index);
+                      }
+                    }}
+                    className="group relative aspect-[4/3] w-full border border-border-custom/30 rounded-sm overflow-hidden bg-primary-dark shadow-sm hover:shadow-card transition-all cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Open preview modal for ${img.alt}`}
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {/* Subtle Interactive Screen Mask */}
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <div className="text-white flex flex-col items-center space-y-2 transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
+                        <div className="w-10 h-10 rounded-full border border-white/20 bg-white/10 flex items-center justify-center">
+                          <Eye className="h-5 w-5" />
+                        </div>
+                        <span className="text-[10px] uppercase font-bold tracking-wider font-accent">Zoom View</span>
                       </div>
-                      <span className="text-[10px] uppercase font-bold tracking-wider font-accent">Zoom View</span>
                     </div>
-                  </div>
-                  {/* Category Pill Tag */}
-                  <span className="absolute top-3 left-3 bg-primary-dark/80 text-text-inverse text-[9px] font-accent font-bold uppercase tracking-wider px-2.5 py-1 backdrop-blur-sm border border-white/5 rounded-sm">
-                    {img.category}
-                  </span>
-                </motion.div>
-              ))}
+                    {/* Category Pill Tag */}
+                    <span className="absolute top-3 left-3 bg-primary-dark/80 text-text-inverse text-[9px] font-accent font-bold uppercase tracking-wider px-2.5 py-1 backdrop-blur-sm border border-white/5 rounded-sm">
+                      {img.category}
+                    </span>
+                  </motion.div>
+                ))}
+              </motion.div>
             </AnimatePresence>
           </div>
         </div>
