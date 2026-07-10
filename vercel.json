@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/about-us",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/clients",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}
