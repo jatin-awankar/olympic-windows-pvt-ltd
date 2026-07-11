@@ -40,11 +40,11 @@ export default function Services() {
 
   return (
     <div className="flex flex-col w-full font-sans overflow-hidden">
-      
+
       {/* Page Header */}
       <section className="bg-primary text-text-inverse py-20 relative overflow-hidden">
         <div
-          className="absolute inset-0 opacity-20 bg-cover bg-center pointer-events-none"
+          className="absolute inset-0 opacity-40 bg-cover bg-center pointer-events-none"
           style={{
             backgroundImage: `linear-gradient(to right, rgba(10, 17, 34, 0.95) 30%, rgba(10, 17, 34, 0.6) 100%), url('/images/headers/services.webp')`
           }}
@@ -103,7 +103,7 @@ export default function Services() {
                   <div className="font-accent text-4xl md:text-5xl font-bold text-accent/20 tracking-wider md:w-20 group-hover:text-accent/35 transition-colors">
                     {proc.step}
                   </div>
-                  
+
                   {/* Icon */}
                   <div className="h-12 w-12 rounded-sm bg-accent/10 border border-accent/30 flex items-center justify-center text-accent shrink-0 group-hover:bg-accent group-hover:text-white transition-colors duration-300">
                     <Icon className="h-5 w-5" />

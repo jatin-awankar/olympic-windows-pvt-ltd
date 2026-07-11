@@ -35,7 +35,7 @@ export default function Impact() {
       {/* Page Header */}
       <section className="bg-primary text-text-inverse py-20 relative overflow-hidden">
         <div
-          className="absolute inset-0 opacity-20 bg-cover bg-center pointer-events-none"
+          className="absolute inset-0 opacity-40 bg-cover bg-center pointer-events-none"
           style={{
             backgroundImage: `linear-gradient(to right, rgba(10, 17, 34, 0.95) 30%, rgba(10, 17, 34, 0.6) 100%), url('/images/headers/impact.webp')`
           }}

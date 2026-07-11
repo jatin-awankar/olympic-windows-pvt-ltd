@@ -110,11 +110,11 @@ export default function ProjectsIndex() {
 
   return (
     <div className="flex flex-col w-full font-sans overflow-hidden">
-      
+
       {/* Page Header */}
       <section className="bg-primary text-text-inverse py-20 relative overflow-hidden">
         <div
-          className="absolute inset-0 opacity-20 bg-cover bg-center pointer-events-none"
+          className="absolute inset-0 opacity-40 bg-cover bg-center pointer-events-none"
           style={{
             backgroundImage: `linear-gradient(to right, rgba(10, 17, 34, 0.95) 30%, rgba(10, 17, 34, 0.6) 100%), url('/images/headers/projects.webp')`
           }}
@@ -134,7 +134,7 @@ export default function ProjectsIndex() {
       {/* Main List */}
       <section className="bg-surface py-20 border-b border-border-custom/30">
         <div className="mx-auto max-w-7xl px-6 md:px-10 flex flex-col space-y-12">
-          
+
           <div className="grid grid-cols-1 gap-12">
             {projects.map((proj, i) => (
               <motion.div
@@ -147,7 +147,7 @@ export default function ProjectsIndex() {
               >
                 {/* Visual Image Block */}
                 <div className="w-full lg:w-[280px] h-[200px] bg-slate-900 rounded-sm overflow-hidden relative shrink-0 border border-border-custom/30">
-                  <div 
+                  <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                     style={{ backgroundImage: `url(${proj.imageUrl})` }}
                   />

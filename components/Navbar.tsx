@@ -73,8 +73,8 @@ export default function Navbar() {
   return (
     <header
       className={`sticky top-0 z-50 w-full border-b transition-all duration-300 text-text-inverse ${scrolled
-          ? "bg-primary/95 backdrop-blur-md border-white/10 shadow-md"
-          : "bg-primary border-transparent"
+        ? "bg-primary/95 backdrop-blur-md border-white/10 shadow-md"
+        : "bg-primary border-transparent"
         }`}
     >
       <div className="mx-auto flex max-w-7xl px-6 md:px-10 h-20 items-center justify-between">
@@ -92,9 +92,14 @@ export default function Navbar() {
             <span className="font-accent text-lg font-bold tracking-wider text-text-inverse leading-tight">
               OLYMPIC <span className="text-accent group-hover:text-accent-light transition-colors">WINDOWS</span>
             </span>
-            <span className="text-[8px] uppercase tracking-[0.20em] text-text-muted">
-              Setting New Standards
-            </span>
+            <Image
+              src="/images/general/tag.webp"
+              alt="Setting New Standards"
+              width={100}
+              height={25}
+              className="object-contain opacity-60 mt-0.5"
+              priority
+            />
           </div>
         </Link>
 
@@ -135,8 +140,8 @@ export default function Navbar() {
             <button
               onClick={() => setIsProductsDropdownOpen(!isProductsDropdownOpen)}
               className={`flex items-center space-x-1 cursor-pointer transition-colors duration-200 focus:outline-none relative ${isProductsActive() || isProductsDropdownOpen
-                  ? "text-accent font-medium"
-                  : "text-text-inverse hover:text-accent"
+                ? "text-accent font-medium"
+                : "text-text-inverse hover:text-accent"
                 }`}
             >
               <span>Products</span>
@@ -170,8 +175,8 @@ export default function Navbar() {
                       href="/products"
                       onClick={() => setIsProductsDropdownOpen(false)}
                       className={`block px-4 py-2 text-sm rounded-sm transition-colors duration-200 ${pathname === "/products"
-                          ? "text-accent bg-primary/45 font-medium"
-                          : "text-text-inverse hover:bg-primary/40 hover:text-accent"
+                        ? "text-accent bg-primary/45 font-medium"
+                        : "text-text-inverse hover:bg-primary/40 hover:text-accent"
                         }`}
                     >
                       All Products
@@ -183,8 +188,8 @@ export default function Navbar() {
                         href={link.href}
                         onClick={() => setIsProductsDropdownOpen(false)}
                         className={`block px-4 py-2 text-sm rounded-sm transition-colors duration-200 ${isActive(link.href)
-                            ? "text-accent bg-primary/45 font-medium"
-                            : "text-text-inverse hover:bg-primary/40 hover:text-accent"
+                          ? "text-accent bg-primary/45 font-medium"
+                          : "text-text-inverse hover:bg-primary/40 hover:text-accent"
                           }`}
                       >
                         {link.name}

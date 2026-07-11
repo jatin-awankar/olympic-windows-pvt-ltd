@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ShieldCheck, Target, Award, MapPin } from "lucide-react";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -26,12 +27,40 @@ export default function About() {
     },
   ];
 
+  const certifications = [
+    {
+      title: "CE Conformity Mark",
+      desc: "Certified compliance with European Union health, safety, and environmental protection performance standards.",
+      src: "/images/certifications/cert-1.webp",
+    },
+    {
+      title: "Qualicoat Quality Label",
+      desc: "International standard assurance for high-performance architectural powder coating finishes on aluminum profiles.",
+      src: "/images/certifications/cert-2.webp",
+    },
+    {
+      title: "ISO 9001:2015",
+      desc: "Global standard certification verifying strict quality management protocols throughout design and fabrication.",
+      src: "/images/certifications/cert-3.webp",
+    },
+    {
+      title: "WiWA Performance Certified",
+      desc: "Rigorously audited for structural wind load, air infiltration, and water penetration resistance during severe monsoon cycles.",
+      src: "/images/certifications/cert-4.webp",
+    },
+    {
+      title: "IFT Rosenheim Tested",
+      desc: "Verified performance parameters for thermal insulation (U-value) and acoustic noise isolation standards.",
+      src: "/images/certifications/cert-5.webp",
+    },
+  ];
+
   return (
     <div className="flex flex-col w-full">
       {/* Page Header */}
       <section className="bg-primary text-text-inverse py-20 relative overflow-hidden">
         <div
-          className="absolute inset-0 opacity-20 bg-cover bg-center pointer-events-none"
+          className="absolute inset-0 opacity-40 bg-cover bg-center pointer-events-none"
           style={{
             backgroundImage: `linear-gradient(to right, rgba(10, 17, 34, 0.95) 30%, rgba(10, 17, 34, 0.6) 100%), url('/images/headers/about-us.webp')`
           }}
@@ -82,9 +111,54 @@ export default function About() {
           </div>
         </div>
       </section>
+      {/* Fabrication Unit and Warehouse */}
+      <section className="bg-surface-alt py-20 border-b border-border-custom/30">
+        <div className="mx-auto max-w-7xl px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Image Column */}
+          <div className="lg:col-span-6 relative aspect-[4/3] w-full bg-primary-dark border border-border-custom/40 rounded-sm shadow-card overflow-hidden group">
+            <Image
+              src="/images/general/workshop.webp"
+              alt="Olympic Windows Fabrication Unit and Warehouse"
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-103"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
+          </div>
+
+          {/* Content Column */}
+          <div className="lg:col-span-6 flex flex-col space-y-6">
+            <span className="text-accent font-accent font-semibold tracking-wider text-xs uppercase">
+              Production Capabilities
+            </span>
+            <h2 className="text-2xl md:text-3xl font-bold text-primary font-accent">
+              Fabrication Unit And Warehouse
+            </h2>
+            <div className="w-12 h-1 bg-accent" />
+            <div className="space-y-4 text-text-secondary leading-relaxed text-sm md:text-base">
+              <p>
+                Our manufacturing facility is situated at our dedicated <strong>Usatane, Dombivli</strong> location (<strong>Khoni - Taloja Bypass Road, Maharashtra</strong>). This is where raw materials—including extruded aluminum, specialized hardware, and glass—are engineered and transformed into finished window and door frames.
+              </p>
+              <p>
+                The facility is optimized with modern production lines, precision assembly areas, advanced quality control check zones, and administrative offices. This infrastructure supports our high-volume output capacity of up to <strong>7,500 units per month</strong>, allowing us to reliably deliver zero-defect window systems for massive B2B developments across India.
+              </p>
+            </div>
+            <div className="pt-2 flex items-center space-x-6">
+              <div className="border-l-2 border-accent pl-4">
+                <span className="block text-2xl font-bold text-primary font-accent">100,000+</span>
+                <span className="text-xs text-text-muted uppercase tracking-wider">Units Delivered</span>
+              </div>
+              <div className="border-l-2 border-accent pl-4">
+                <span className="block text-2xl font-bold text-primary font-accent">7,500</span>
+                <span className="text-xs text-text-muted uppercase tracking-wider">Monthly Units Capacity</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Core Values */}
-      <section className="bg-surface-alt py-20 border-b border-border-custom/30">
+      <section className="bg-surface py-20 border-b border-border-custom/30">
         <div className="mx-auto max-w-7xl px-6 md:px-10 flex flex-col space-y-12">
           <div className="text-center flex flex-col space-y-3">
             <span className="text-accent font-accent font-semibold tracking-wider text-xs uppercase">
@@ -100,7 +174,7 @@ export default function About() {
             {values.map((val) => {
               const Icon = val.icon;
               return (
-                <div key={val.title} className="bg-surface border border-border-custom/40 p-8 flex flex-col space-y-4">
+                <div key={val.title} className="bg-surface-alt border border-border-custom/40 p-8 flex flex-col space-y-4">
                   <div className="h-12 w-12 rounded-sm bg-accent/10 border border-accent/30 flex items-center justify-center text-accent">
                     <Icon className="h-6 w-6" />
                   </div>
@@ -114,7 +188,7 @@ export default function About() {
       </section>
 
       {/* Locations */}
-      <section className="bg-surface py-20">
+      <section className="bg-surface-alt py-20">
         <div className="mx-auto max-w-7xl px-6 md:px-10 flex flex-col space-y-12">
           <div className="flex flex-col space-y-3">
             <span className="text-accent font-accent font-semibold tracking-wider text-xs uppercase">
@@ -127,7 +201,7 @@ export default function About() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* India Location */}
-            <div className="border border-border-custom/40 p-8 bg-surface-alt flex flex-col space-y-4">
+            <div className="border border-border-custom/40 p-8 bg-surface flex flex-col space-y-4">
               <MapPin className="h-8 w-8 text-accent" />
               <h3 className="text-xl font-bold text-primary font-accent">India Factory & Headquarters</h3>
               <p className="text-sm text-text-secondary leading-relaxed">
@@ -140,7 +214,7 @@ export default function About() {
             </div>
 
             {/* London Location */}
-            <div className="border border-border-custom/40 p-8 bg-surface-alt flex flex-col space-y-4">
+            <div className="border border-border-custom/40 p-8 bg-surface flex flex-col space-y-4">
               <MapPin className="h-8 w-8 text-accent" />
               <h3 className="text-xl font-bold text-primary font-accent">London International Office</h3>
               <p className="text-sm text-text-secondary leading-relaxed">
@@ -151,6 +225,39 @@ export default function About() {
                 <p className="mt-1">Scope: International Standards & Consultation</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications and Standards */}
+      <section className="bg-surface py-20 border-b border-border-custom/30">
+        <div className="mx-auto max-w-7xl px-6 md:px-10 flex flex-col space-y-12">
+          <div className="text-center flex flex-col space-y-3">
+            <span className="text-accent font-accent font-semibold tracking-wider text-xs uppercase">
+              Quality Assurance
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+              Certifications & Standards
+            </h2>
+            <div className="w-12 h-1 bg-accent mx-auto mt-2" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-stretch">
+            {certifications.map((cert) => (
+              <div key={cert.title} className="bg-surface-alt border border-border-custom/40 p-6 flex flex-col items-center text-center rounded-sm">
+                <div className="h-24 w-full relative mb-4 flex items-center justify-center bg-white/40 rounded-sm p-2 border border-border-custom/10">
+                  <Image
+                    src={cert.src}
+                    alt={cert.title}
+                    fill
+                    className="object-contain p-2"
+                    sizes="(max-width: 768px) 100vw, 20vw"
+                  />
+                </div>
+                <h3 className="text-sm font-bold font-accent text-primary leading-snug">{cert.title}</h3>
+                <p className="text-xs text-text-secondary mt-2 leading-relaxed">{cert.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

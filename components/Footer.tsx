@@ -45,9 +45,14 @@ export default function Footer() {
               <span className="font-accent text-lg font-bold tracking-wider text-text-inverse leading-tight">
                 OLYMPIC <span className="text-accent group-hover:text-accent-light transition-colors">WINDOWS</span>
               </span>
-              <span className="text-[8px] uppercase tracking-[0.20em] text-text-muted">
-                Setting New Standards
-              </span>
+              <Image
+                src="/images/general/tag.webp"
+                alt="Setting New Standards"
+                width={100}
+                height={25}
+                className="object-contain opacity-60 mt-0.5"
+                priority
+              />
             </div>
           </Link>
           <p className="text-sm text-text-muted leading-relaxed max-w-xs">

@@ -197,7 +197,7 @@ export default async function ProductCategoryDetail({ params }: PageProps) {
       {/* Back button & Header Banner */}
       <section className="bg-primary text-text-inverse py-16 relative overflow-hidden">
         <div
-          className="absolute inset-0 opacity-15 bg-cover bg-center pointer-events-none"
+          className="absolute inset-0 opacity-35 bg-cover bg-center pointer-events-none"
           style={{
             backgroundImage: `linear-gradient(to right, rgba(10, 17, 34, 0.95) 30%, rgba(10, 17, 34, 0.6) 100%), url(${product.imageUrl})`
           }}
