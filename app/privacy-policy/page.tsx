@@ -4,6 +4,7 @@ import PageHeader from "@/components/ui/PageHeader";
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import LegalNav from "@/components/sections/legal/LegalNav";
+import { contactConfig } from "@/data/contact";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -74,8 +75,8 @@ export default function PrivacyPolicy() {
             <div className="pt-6 border-t border-border-custom/25 flex items-center space-x-3 text-sm text-text-secondary">
               <Mail className="h-4 w-4 text-accent" />
               <span>Questions? Email our compliance team at </span>
-              <a href="mailto:info@olympicwindows.in" className="text-accent hover:underline font-semibold font-accent">
-                info@olympicwindows.in
+              <a href={contactConfig.email.link} className="text-accent hover:underline font-semibold font-accent">
+                {contactConfig.email.display}
               </a>
             </div>
           </article>

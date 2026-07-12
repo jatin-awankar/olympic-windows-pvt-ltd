@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
+import { contactConfig } from "@/data/contact";
 
 export default function CtaSection() {
   return (
@@ -20,10 +21,10 @@ export default function CtaSection() {
             Book a Consultation
           </Link>
           <a
-            href="tel:+919167394442"
+            href={contactConfig.phone.link}
             className="border border-white/50 hover:border-white text-white hover:bg-white/10 font-accent font-semibold px-8 py-4 rounded-sm transition-colors text-sm hover:shadow-lg active:scale-95 transition-transform"
           >
-            Call: +91 91673 94442
+            Call: {contactConfig.phone.display}
           </a>
         </div>
       </Container>

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { MessageCircle, Phone, type LucideIcon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { contactConfig } from "@/data/contact";
 
 interface FloatingButtonProps {
   href: string;
@@ -71,9 +72,6 @@ function FloatingButton({
 export default function FloatingCTA() {
   const [mounted, setMounted] = useState(false);
 
-  const whatsappNumber = "919167394442";
-  const phoneNumber = "+919167394442";
-
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -83,10 +81,10 @@ export default function FloatingCTA() {
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end space-y-4">
       <FloatingButton
-        href={`tel:${phoneNumber}`}
+        href={contactConfig.phone.link}
         icon={Phone}
         iconClassName="h-5 w-5"
-        label="Call Sales Office"
+        label={contactConfig.phone.label}
         tooltipClassName="bg-primary text-text-inverse border border-border-custom/25"
         buttonClassName="bg-accent"
         ringClassName="focus:ring-accent"
@@ -94,10 +92,10 @@ export default function FloatingCTA() {
         ariaLabel="Call Olympic Windows sales office"
       />
       <FloatingButton
-        href={`https://wa.me/${whatsappNumber}`}
+        href={contactConfig.whatsapp.link}
         icon={MessageCircle}
         iconClassName="h-6 w-6"
-        label="WhatsApp Chat"
+        label={contactConfig.whatsapp.display}
         tooltipClassName="bg-[#25D366] text-white"
         buttonClassName="bg-[#25D366]"
         ringClassName="focus:ring-[#25D366]"

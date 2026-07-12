@@ -1,28 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { navLinks, productLinks, legalLinks } from "@/data/navigation";
+import { contactConfig } from "@/data/contact";
 
-const quickLinks = [
-  { name: "About Us", href: "/about" },
-  { name: "Services", href: "/services" },
-  { name: "Projects", href: "/projects" },
-  { name: "Gallery", href: "/gallery" },
-  { name: "Impact & CSR", href: "/impact" },
-  { name: "Contact Us", href: "/contact" },
-];
-
-const productLinks = [
-  { name: "Aluminum Windows", href: "/products/aluminum-windows" },
-  { name: "Aluminum Doors", href: "/products/aluminum-doors" },
-  { name: "Facades & Curtain Walls", href: "/products/facades" },
-  { name: "Aluminum Fins", href: "/products/aluminum-fins" },
-];
-
-const legalLinks = [
-  { name: "Privacy Policy", href: "/privacy-policy" },
-  { name: "Terms of Service", href: "/terms" },
-  { name: "Cookie Policy", href: "/cookie-policy" },
-];
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -120,7 +101,7 @@ export default function Footer() {
             Quick Links
           </h3>
           <ul className="space-y-3 text-sm text-text-muted font-accent">
-            {quickLinks.map((link) => (
+            {navLinks.map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className="hover:text-accent transition-colors duration-150">{link.name}</Link>
               </li>
@@ -167,11 +148,11 @@ export default function Footer() {
           </div>
           <div className="flex items-center space-x-3 text-sm text-text-muted">
             <Phone className="h-4 w-4 text-accent shrink-0" />
-            <a href="tel:+919167394442" className="hover:text-accent transition-colors duration-150">+91 91673 94442</a>
+            <a href={contactConfig.phone.link} className="hover:text-accent transition-colors duration-150">{contactConfig.phone.display}</a>
           </div>
           <div className="flex items-center space-x-3 text-sm text-text-muted">
             <Mail className="h-4 w-4 text-accent shrink-0" />
-            <a href="mailto:info@olympicwindows.in" className="hover:text-accent transition-colors duration-150">info@olympicwindows.in</a>
+            <a href={contactConfig.email.link} className="hover:text-accent transition-colors duration-150">{contactConfig.email.display}</a>
           </div>
         </div>
 
