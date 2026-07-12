@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Mail } from "lucide-react";
+import PageHeader from "@/components/ui/PageHeader";
+import Section from "@/components/ui/Section";
+import Container from "@/components/ui/Container";
+import LegalNav from "@/components/sections/legal/LegalNav";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -8,52 +11,19 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPolicy() {
-  const legalNav = [
-    { name: "Privacy Policy", href: "/privacy-policy", active: true },
-    { name: "Terms of Service", href: "/terms" },
-    { name: "Cookie Policy", href: "/cookie-policy" },
-  ];
-
   return (
     <div className="flex flex-col w-full font-sans">
-      
-      {/* Header Banner */}
-      <section className="bg-primary text-text-inverse py-16 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px]" />
-        <div className="relative mx-auto max-w-7xl px-6 md:px-10 w-full flex flex-col space-y-3">
-          <span className="text-accent font-accent font-semibold tracking-wider text-xs uppercase">
-            Legal & Compliance
-          </span>
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Privacy Policy</h1>
-          <p className="text-sm text-text-muted max-w-xl">
-            Last Updated: July 3, 2026
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        title="Privacy Policy"
+        subtitle="Last Updated: July 3, 2026"
+        tagline="Legal & Compliance"
+        py="py-16"
+      />
 
-      {/* Content Columns */}
-      <section className="bg-surface py-16 border-b border-border-custom/30">
-        <div className="mx-auto max-w-7xl px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12">
-          
-          {/* Sticky Left Navigation */}
-          <aside className="lg:col-span-3">
-            <div className="sticky top-28 flex flex-col space-y-2 border-l border-border-custom/40 pl-4 font-accent">
-              <span className="text-[10px] uppercase font-bold text-text-muted tracking-wider mb-2">Legal Documents</span>
-              {legalNav.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`text-sm py-1.5 transition-colors duration-150 ${
-                    link.active ? "text-accent font-semibold" : "text-text-secondary hover:text-accent"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </div>
-          </aside>
+      <Section variant="surface" className="py-16" hasBorder>
+        <Container className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <LegalNav activeHref="/privacy-policy" />
 
-          {/* Right Text Column */}
           <article className="lg:col-span-9 max-w-3xl flex flex-col space-y-8 font-accent">
             <p className="text-sm text-text-secondary leading-relaxed">
               At Olympic Windows, we value and respect your privacy. This Privacy Policy details how we collect, store, protect, and use the information shared through our contact forms or customer interactions.
@@ -109,10 +79,8 @@ export default function PrivacyPolicy() {
               </a>
             </div>
           </article>
-
-        </div>
-      </section>
-
+        </Container>
+      </Section>
     </div>
   );
 }
