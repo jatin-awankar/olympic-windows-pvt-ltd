@@ -96,7 +96,7 @@ export default function Navbar() {
               src="/images/general/tag.webp"
               alt="Setting New Standards"
               width={100}
-              height={25}
+              height={16}
               className="object-contain opacity-60 mt-0.5"
               priority
             />
