@@ -25,7 +25,25 @@ export const metadata: Metadata = {
     template: "%s | Olympic Windows"
   },
   description: "European precision engineered aluminum windows, doors, facades, and fins. Invited to India by Lodha Group in 2012. Over 100,000 units delivered with uncompromising quality.",
-  keywords: ["aluminum windows", "aluminum doors", "mumbai window manufacturer", "premium window system", "facades", "lodha window partner"],
+  keywords: [
+    "aluminum windows",
+    "aluminum doors",
+    "mumbai window manufacturer",
+    "premium window system",
+    "facades",
+    "lodha window partner",
+    "architectural glazing",
+    "sliding doors",
+    "casement windows",
+    "thermal break systems",
+    "curtain walls",
+    "high-performance window profiles",
+    "soundproof windows",
+    "double glazing windows",
+    "aluminum fins",
+    "Olympic Windows",
+    "Olympic Windows Pvt Ltd"
+  ],
   authors: [{ name: "Olympic Windows" }],
   creator: "Olympic Windows",
   alternates: {
