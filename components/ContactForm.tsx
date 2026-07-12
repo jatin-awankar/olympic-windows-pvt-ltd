@@ -178,7 +178,12 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="bg-surface-alt border border-border-custom/40 p-8 md:p-10 rounded-sm min-h-[500px] flex flex-col justify-center">
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.15, duration: 0.4 }}
+      className="bg-surface-alt border border-border-custom/40 p-8 md:p-10 rounded-sm min-h-[500px] flex flex-col justify-center"
+    >
       <AnimatePresence mode="wait">
         {isSubmitted ? (
           <motion.div
@@ -327,6 +332,6 @@ export default function ContactForm() {
           </motion.form>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }
